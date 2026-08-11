@@ -2,4 +2,7 @@
 
 > 全平台 AC 数据由云端自动化实时同步抓取
 
-<iframe src="./heatmap.html?v=2" width="100%" height="480px" frameborder="0" scrolling="no" style="border-radius: 12px; margin-top: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background: transparent;"></iframe>
+<script>
+  // 用 JavaScript 动态生成带有当前毫秒级时间戳的 iframe，彻底避开 Docsify 缓存
+  document.write('<iframe src="heatmap.html?t=' + new Date().getTime() + '" width="100%" height="260px" frameborder="0"></iframe>');
+</script>
