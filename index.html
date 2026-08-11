@@ -4,80 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>算法训练追踪</title>
-    <!-- 从 CDN 引入 ECharts -->
+    <!-- 引入 Google 免费的高级现代字体 Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
     <style>
-        /* 模仿 GitHub 风格的简洁背景和字体 */
+        :root {
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --accent: #10b981;
+        }
+
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            padding: 40px 20px; 
-            background-color: #f6f8fa; 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background-color: var(--bg-color); 
+            /* 增加一点高级的背景纹理感，使用非常微弱的径向渐变 */
+            background-image: radial-gradient(circle at top right, #e5e7eb 0%, transparent 40%);
             margin: 0;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
+
         .container { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            background: white; 
-            padding: 30px; 
-            border-radius: 6px; 
-            border: 1px solid #d0d7de;
+            width: 100%;
+            max-width: 960px; 
+            background: var(--card-bg); 
+            padding: 40px 50px; 
+            /* 大圆角和柔和的高级阴影 */
+            border-radius: 24px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            transition: transform 0.3s ease;
         }
+
+        .container:hover {
+            transform: translateY(-2px);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 20px;
+        }
+
         h2 { 
-            text-align: center; 
-            color: #24292f; 
-            margin-top: 0;
-            margin-bottom: 30px;
+            color: var(--text-main); 
+            margin: 0;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
-        /* 热力图容器 */
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
         #heatmap { 
             width: 100%; 
-            height: 220px; 
+            height: 240px; 
+        }
+
+        /* 自定义 Echarts 悬浮提示框的 CSS */
+        .custom-tooltip {
+            background: rgba(17, 24, 39, 0.9) !important;
+            backdrop-filter: blur(8px);
+            border: none !important;
+            border-radius: 12px !important;
+            color: #fff !important;
+            padding: 12px 16px !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Training Heatmap</h2>
+        <div class="header">
+            <div>
+                <h2>Algorithm Training</h2>
+                <div class="subtitle">Daily Coding Activity Tracker</div>
+            </div>
+            <!-- 右侧可以留白或者放一个你的个人头像/Logo -->
+        </div>
         <div id="heatmap"></div>
     </div>
 
     <script>
-        // 初始化 ECharts 实例
         const chart = echarts.init(document.getElementById('heatmap'));
 
-        // 使用 fetch 动态读取 GitHub Actions 生成的 data.json
         fetch('data.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('网络响应错误，无法加载 data.json');
-                }
-                return response.json();
-            })
+            .then(response => response.ok ? response.json() : Promise.reject('Failed to load'))
             .then(rawData => {
-                // 1. 将 JSON 对象转换为 ECharts 日历图需要的数组格式: [['2026-08-01', 5], ...]
-                const chartData = Object.keys(rawData).map(date => {
-                    return [date, rawData[date].total];
-                });
-
-                // 获取当前年份，让日历图每年自动翻页
+                const chartData = Object.keys(rawData).map(date => [date, rawData[date].total]);
                 const currentYear = new Date().getFullYear().toString();
 
-                // 2. 配置 ECharts
                 const option = {
                     tooltip: {
                         position: 'top',
-                        // 自定义悬浮框内容，展示各平台明细
+                        className: 'custom-tooltip', // 应用上面写好的高级黑客风悬浮窗
                         formatter: function (p) {
                             const date = p.data[0];
                             const total = p.data[1];
                             const detail = rawData[date];
-                            if (!detail) return `${date}: 0 题`;
+                            if (!detail) return `${date}<br/>0 AC`;
                             return `
-                                <div style="font-weight:bold;margin-bottom:4px;">${date}</div>
-                                总计 AC: <b>${total}</b> 题<br/>
-                                <span style="color:#888;font-size:12px;">
-                                  CF: ${detail.codeforces || 0} | 洛谷: ${detail.luogu || 0} | 牛客: ${detail.nowcoder || 0}
-                                </span>
+                                <div style="font-family:'Inter',sans-serif;">
+                                    <div style="font-size:13px; color:#9ca3af; margin-bottom:6px;">${date}</div>
+                                    <div style="font-size:16px; font-weight:600; margin-bottom:8px;">Total AC: <span style="color:#10b981;">${total}</span></div>
+                                    <div style="font-size:12px; color:#d1d5db; display:flex; gap:12px;">
+                                        <span>CF: ${detail.codeforces || 0}</span>
+                                        <span>Luogu: ${detail.luogu || 0}</span>
+                                        <span>Nowcoder: ${detail.nowcoder || 0}</span>
+                                    </div>
+                                </div>
                             `;
                         }
                     },
@@ -86,59 +133,58 @@
                         orient: 'horizontal',
                         left: 'right',
                         top: 0,
-                        itemWidth: 14,
-                        itemHeight: 14,
-                        itemGap: 4,
-                        textStyle: { color: '#57606a', fontSize: 12 },
+                        itemWidth: 16,
+                        itemHeight: 16,
+                        itemGap: 6,
+                        textStyle: { color: '#6b7280', fontSize: 13, fontFamily: 'Inter' },
                         pieces: [
-                            { min: 10, label: 'More', color: '#216e39' },
-                            { min: 5, max: 9, label: ' ', color: '#30a14e' },
-                            { min: 1, max: 4, label: ' ', color: '#9be9a8' },
-                            { value: 0, label: 'Less', color: '#ebedf0' }
+                            { min: 10, label: 'More', color: '#10b981' }, // 使用更现代的明亮翠绿色
+                            { min: 5, max: 9, label: ' ', color: '#34d399' },
+                            { min: 1, max: 4, label: ' ', color: '#a7f3d0' },
+                            { value: 0, label: 'Less', color: '#f3f4f6' }
                         ],
-                        outOfRange: { color: '#ebedf0' }
+                        outOfRange: { color: '#f3f4f6' }
                     },
                     calendar: {
-                        top: 50,
+                        top: 70,
                         left: 30,
                         right: 10,
-                        cellSize: ['auto', 16],
-                        range: currentYear, // 使用动态年份
+                        cellSize: ['auto', 18],
+                        range: currentYear,
                         itemStyle: {
-                            borderWidth: 3,
-                            borderColor: '#fff',
-                            color: '#ebedf0'
+                            borderWidth: 4, // 增加块与块之间的间距感
+                            borderColor: '#ffffff',
+                            color: '#f3f4f6',
+                            borderRadius: 4 // 给每个小方块加上微圆角
                         },
                         splitLine: { show: false },
                         yearLabel: { show: false },
                         dayLabel: {
-                            nameMap: ['日', '一', '二', '三', '四', '五', '六'],
-                            color: '#57606a',
-                            fontSize: 12
+                            nameMap: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                            color: '#9ca3af',
+                            fontSize: 12,
+                            fontFamily: 'Inter'
                         },
                         monthLabel: {
-                            nameMap: 'ZH',
-                            color: '#57606a',
-                            fontSize: 12
+                            nameMap: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                            color: '#6b7280',
+                            fontSize: 13,
+                            fontFamily: 'Inter',
+                            fontWeight: 600
                         }
                     },
                     series: {
                         type: 'heatmap',
                         coordinateSystem: 'calendar',
-                        data: chartData,
-                        itemStyle: { borderRadius: 2 } 
+                        data: chartData
                     }
                 };
-
-                // 渲染图表
                 chart.setOption(option);
             })
-            .catch(error => {
-                console.error('获取数据失败:', error);
-                document.getElementById('heatmap').innerHTML = '<p style="text-align:center;color:red;padding-top:50px;">无法加载刷题数据，请检查 data.json 是否存在。</p>';
+            .catch(() => {
+                document.getElementById('heatmap').innerHTML = '<p style="text-align:center;color:#ef4444;padding-top:50px;">Failed to load training data.</p>';
             });
         
-        // 窗口缩放时自适应重绘
         window.addEventListener('resize', () => chart.resize());
     </script>
 </body>
