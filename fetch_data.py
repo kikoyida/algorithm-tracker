@@ -4,13 +4,17 @@ from datetime import datetime
 from collections import defaultdict
 import os
 from bs4 import BeautifulSoup  # 新增：用于解析牛客网页
+from dotenv import load_dotenv
+
+# 加载 .env 文件中的环境变量
+load_dotenv()
 
 # ================= 配置区 =================
 CF_HANDLE = "kikoyida1016"
 NOWCODER_UID = "278539296"  # 你的牛客 UID 已经填好
 
 # 你的真实牛客 Cookie
-NOWCODER_COOKIE = os.getenv("nowcoder_cookie","")
+NOWCODER_COOKIE = os.getenv("NOWCODER_COOKIE","")
 
 NOWCODER_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
