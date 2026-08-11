@@ -5,13 +5,86 @@
   <title>算法训练追踪</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <!-- 引入顶级无衬线英文字体 Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
   <style>
-    /* 让首页的热力图容器看起来更协调 */
+    /* 全局配色与排版定义 */
+    :root {
+      --theme-color: #10b981; /* 完美的 AC 翡翠绿 */
+      --base-font-size: 16px;
+      --base-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --sidebar-width: 280px;
+    }
+
+    /* 1. 全局微渐变背景（替代死板的纯白） */
+    body {
+      background: linear-gradient(135deg, #f6f8fa 0%, #e2e8f0 100%);
+      background-attachment: fixed;
+    }
+
+    /* 2. 侧边栏：亚克力毛玻璃效果 (Apple 风格) */
+    .sidebar {
+      background: rgba(255, 255, 255, 0.4) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 4px 0 24px rgba(0,0,0,0.02);
+    }
+    
+    /* 侧边栏标题更具张力 */
+    .sidebar h1 {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+    }
+    
+    .sidebar ul li a {
+      color: #475569;
+      transition: all 0.2s ease;
+    }
+    .sidebar ul li a:hover {
+      color: var(--theme-color);
+      transform: translateX(4px);
+    }
+
+    /* 3. 主阅读区：悬浮白瓷卡片感 */
+    .markdown-section {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 50px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+      border: 1px solid rgba(255, 255, 255, 1);
+      color: #334155;
+    }
+
+    /* 标题排版优化，增加呼吸感 */
+    .markdown-section h1, .markdown-section h2 {
+      color: #0f172a;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* 引用块高级化 */
+    .markdown-section blockquote {
+      background: linear-gradient(to right, #ecfdf5, rgba(255,255,255,0));
+      border-left: 4px solid var(--theme-color);
+      color: #065f46;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    /* 4. 热力图容器无缝融合入卡片 */
     .heatmap-container {
-      width: 100%;
-      margin: 20px 0 30px 0;
-      background: transparent;
+      margin: -10px -20px 30px -20px !important;
+      padding: 20px 20px 10px 20px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     }
   </style>
 </head>
