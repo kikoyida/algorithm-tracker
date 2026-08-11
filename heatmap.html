@@ -35,6 +35,7 @@
             padding: 12px 16px !important;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
         }
+        /* Tag 详情弹窗样式 */
         #tagModal {
             display: none; 
             position: fixed; 
@@ -44,7 +45,7 @@
             background: white; 
             padding: 24px; 
             border-radius: 16px; 
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
             z-index: 1000; 
             width: 320px;
             font-family: 'Inter', sans-serif;
@@ -56,6 +57,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.4);
             z-index: 999;
+            backdrop-filter: blur(2px);
         }
         .tag-badge {
             background: #e0e7ff;
@@ -70,6 +72,7 @@
 <body>
     <div id="heatmap"></div>
 
+    <!-- 弹窗遮罩与主体 -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
     <div id="tagModal">
         <h3 id="modalDate" style="margin-top:0; margin-bottom:12px; color:#111827;"></h3>
@@ -79,17 +82,19 @@
         </div>
         <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color:#374151;">训练标签:</div>
         <div id="modalTags" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
-        <button onclick="closeModal()" style="margin-top:20px; width:100%; padding:10px; background:#f3f4f6; color:#4b5563; font-weight:600; border:none; border-radius:8px; cursor:pointer;">关闭</button>
+        <button onclick="closeModal()" style="margin-top:20px; width:100%; padding:10px; background:#f3f4f6; color:#4b5563; font-weight:600; border:none; border-radius:8px; cursor:pointer; transition:background 0.2s;">关闭</button>
     </div>
 
     <script>
         const chart = echarts.init(document.getElementById('heatmap'));
-        let globalData = {};
+        let globalData = {}; // 存储全局数据供点击事件调用
 
         fetch('data.json')
-            .then(res => res.json())
+            .then(response => response.ok ? response.json() : Promise.reject('Failed to load'))
             .then(rawData => {
                 globalData = rawData;
+                
+                // 将数据转为 ECharts 数组格式，热力图深度基于 AC 数量
                 const chartData = Object.keys(rawData).map(date => {
                     const acCount = rawData[date].ac !== undefined ? rawData[date].ac : (rawData[date].total || 0);
                     return [date, acCount];
@@ -98,14 +103,16 @@
 
                 const option = {
                     tooltip: {
-                        position: 'bottom',
+                        position: 'top',
                         className: 'custom-tooltip',
                         formatter: function (p) {
                             const date = p.data[0];
                             const detail = rawData[date];
                             if (!detail) return `${date}<br/>No Record`;
+                            
                             const ac = detail.ac !== undefined ? detail.ac : (detail.total || 0);
                             const tries = detail.try || 0;
+
                             return `
                                 <div style="font-family:'Inter',sans-serif;">
                                     <div style="font-size:13px; color:#9ca3af; margin-bottom:6px;">${date}</div>
@@ -125,6 +132,7 @@
                         itemHeight: 16,
                         itemGap: 6,
                         textStyle: { color: '#6b7280', fontSize: 13, fontFamily: 'Inter' },
+                        // 满足要求：3题及以上中等深度，5题及以上最深
                         pieces: [
                             { min: 5, label: 'More', color: '#047857' },    
                             { min: 3, max: 4, label: ' ', color: '#10b981' }, 
@@ -139,16 +147,26 @@
                         right: 10,
                         cellSize: ['auto', 18],
                         range: currentYear,
-                        itemStyle: { borderWidth: 4, borderColor: '#ffffff', color: '#f3f4f6', borderRadius: 4 },
+                        itemStyle: {
+                            borderWidth: 4,
+                            borderColor: '#ffffff',
+                            color: '#f3f4f6',
+                            borderRadius: 4 
+                        },
                         splitLine: { show: false },
                         yearLabel: { show: false },
                         dayLabel: {
                             nameMap: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                            color: '#9ca3af', fontSize: 12, fontFamily: 'Inter'
+                            color: '#9ca3af',
+                            fontSize: 12,
+                            fontFamily: 'Inter'
                         },
                         monthLabel: {
                             nameMap: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                            color: '#6b7280', fontSize: 13, fontFamily: 'Inter', fontWeight: 600
+                            color: '#6b7280',
+                            fontSize: 13,
+                            fontFamily: 'Inter',
+                            fontWeight: 600
                         }
                     },
                     series: {
@@ -159,23 +177,27 @@
                 };
                 chart.setOption(option);
 
+                // 绑定点击事件触发弹窗
                 chart.on('click', function (params) {
                     if (params.componentType === 'series') {
-                        openModal(params.data[0], globalData[params.data[0]]);
+                        const date = params.data[0];
+                        openModal(date, globalData[date]);
                     }
                 });
-            }).catch(err => console.error("加载热力图数据失败:", err));
-
+            });
+        
         window.addEventListener('resize', () => chart.resize());
 
         function openModal(date, data) {
             if (!data) return;
+            
             document.getElementById('modalDate').innerText = date;
             document.getElementById('modalAC').innerText = data.ac !== undefined ? data.ac : (data.total || 0);
             document.getElementById('modalTry').innerText = data.try || 0;
             
             const tagsContainer = document.getElementById('modalTags');
             tagsContainer.innerHTML = '';
+            
             if (data.tags && data.tags.length > 0) {
                 data.tags.forEach(tag => {
                     const span = document.createElement('span');
