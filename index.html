@@ -37,19 +37,20 @@
               `;
               // 用 JavaScript 在 Docsify 渲染出的 HTML 中精准寻找标题的结束位置，把热力图塞在标题下方
                 if (vm.route.path === '/' || vm.route.path === '/README') {
-                const heatmapIframe = `
+              // 生成当前时间的随机时间戳，强迫浏览器每次都拉取最新版 heatmap.html
+                    const t = new Date().getTime(); 
+  
+                    const heatmapIframe = `
                     <div class="heatmap-container" style="width: 100%; height: 320px; min-height: 320px; margin: 20px 0 10px 0;">
-                    <iframe src="heatmap.html" width="100%" height="320px" style="border: none; background: transparent; display: block;"></iframe>
+                    <iframe src="heatmap.html?t=${t}" width="100%" height="320px" style="border: none; background: transparent; display: block;"></iframe>
                     </div>
                 `;
   
-                // 寻找主标题或副标题的结束标签，把它插在下面
                 if (html.includes('</p>')) {
-                    // 如果文章里有段落，插在第一个段落后面
-                    const parts = html.split('</p>');
-                    return parts[0] + '</p>' + heatmapIframe + parts.slice(1).join('</p>');
+                  const parts = html.split('</p>');
+                return parts[0] + '</p>' + heatmapIframe + parts.slice(1).join('</p>');
                 } else {
-                    return heatmapIframe + html;
+                  return heatmapIframe + html;
                 }
             }
             return html;
