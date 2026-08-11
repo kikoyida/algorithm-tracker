@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算法训练追踪</title>
+    <!-- 引入 Google 免费的高级现代字体 Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --accent: #10b981;
+        }
+
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background-color: var(--bg-color); 
+            /* 增加一点高级的背景纹理感，使用非常微弱的径向渐变 */
+            background-image: radial-gradient(circle at top right, #e5e7eb 0%, transparent 40%);
+            margin: 0;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 960px; 
+            background: var(--card-bg); 
+            padding: 40px 50px; 
+            /* 大圆角和柔和的高级阴影 */
+            border-radius: 24px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-2px);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 20px;
+        }
+
+        h2 { 
+            color: var(--text-main); 
+            margin: 0;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        #heatmap { 
+            width: 100%; 
+            height: 240px; 
+        }
+
+        /* 自定义 Echarts 悬浮提示框的 CSS */
+        .custom-tooltip {
+            background: rgba(17, 24, 39, 0.9) !important;
+            backdrop-filter: blur(8px);
+            border: none !important;
+            border-radius: 12px !important;
+            color: #fff !important;
+            padding: 12px 16px !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h2>Algorithm Training</h2>
+                <div class="subtitle">Daily Coding Activity Tracker</div>
+            </div>
+            <!-- 右侧可以留白或者放一个你的个人头像/Logo -->
+        </div>
+        <div id="heatmap"></div>
+    </div>
+
+    <script>
+        const chart = echarts.init(document.getElementById('heatmap'));
+
+        fetch('data.json')
+            .then(response => response.ok ? response.json() : Promise.reject('Failed to load'))
+            .then(rawData => {
+                const chartData = Object.keys(rawData).map(date => [date, rawData[date].total]);
+                const currentYear = new Date().getFullYear().toString();
+
+                const option = {
+                    tooltip: {
+                        position: 'top',
+                        className: 'custom-tooltip', // 应用上面写好的高级黑客风悬浮窗
+                        formatter: function (p) {
+                            const date = p.data[0];
+                            const total = p.data[1];
+                            const detail = rawData[date];
+                            if (!detail) return `${date}<br/>0 AC`;
+                            return `
+                                <div style="font-family:'Inter',sans-serif;">
+                                    <div style="font-size:13px; color:#9ca3af; margin-bottom:6px;">${date}</div>
+                                    <div style="font-size:16px; font-weight:600; margin-bottom:8px;">Total AC: <span style="color:#10b981;">${total}</span></div>
+                                    <div style="font-size:12px; color:#d1d5db; display:flex; gap:12px;">
+                                        <span>CF: ${detail.codeforces || 0}</span>
+                                        <span>Luogu: ${detail.luogu || 0}</span>
+                                        <span>Nowcoder: ${detail.nowcoder || 0}</span>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    },
+                    visualMap: {
+                        type: 'piecewise',
+                        orient: 'horizontal',
+                        left: 'right',
+                        top: 0,
+                        itemWidth: 16,
+                        itemHeight: 16,
+                        itemGap: 6,
+                        textStyle: { color: '#6b7280', fontSize: 13, fontFamily: 'Inter' },
+                        pieces: [
+                            { min: 10, label: 'More', color: '#10b981' }, // 使用更现代的明亮翠绿色
+                            { min: 5, max: 9, label: ' ', color: '#34d399' },
+                            { min: 1, max: 4, label: ' ', color: '#a7f3d0' },
+                            { value: 0, label: 'Less', color: '#f3f4f6' }
+                        ],
+                        outOfRange: { color: '#f3f4f6' }
+                    },
+                    calendar: {
+                        top: 70,
+                        left: 30,
+                        right: 10,
+                        cellSize: ['auto', 18],
+                        range: currentYear,
+                        itemStyle: {
+                            borderWidth: 4, // 增加块与块之间的间距感
+                            borderColor: '#ffffff',
+                            color: '#f3f4f6',
+                            borderRadius: 4 // 给每个小方块加上微圆角
+                        },
+                        splitLine: { show: false },
+                        yearLabel: { show: false },
+                        dayLabel: {
+                            nameMap: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                            color: '#9ca3af',
+                            fontSize: 12,
+                            fontFamily: 'Inter'
+                        },
+                        monthLabel: {
+                            nameMap: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                            color: '#6b7280',
+                            fontSize: 13,
+                            fontFamily: 'Inter',
+                            fontWeight: 600
+                        }
+                    },
+                    series: {
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: chartData
+                    }
+                };
+                chart.setOption(option);
+            })
+            .catch(() => {
+                document.getElementById('heatmap').innerHTML = '<p style="text-align:center;color:#ef4444;padding-top:50px;">Failed to load training data.</p>';
+            });
+        
+        window.addEventListener('resize', () => chart.resize());
+    </script>
+</body>
+</html>
