@@ -3,77 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>绠楁硶璁粌杩借釜</title>
-    <!-- 寮曞叆 Google 鍏嶈垂鐨勯珮绾х幇浠ｅ瓧浣?Inter -->
+    <title>算法训练追踪</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
     <style>
         :root {
-            --bg-color: #f3f4f6;
-            --card-bg: #ffffff;
+            --bg-color: transparent;
             --text-main: #111827;
             --text-muted: #6b7280;
             --accent: #10b981;
         }
-
         body { 
             font-family: 'Inter', -apple-system, sans-serif; 
             background-color: var(--bg-color); 
-            /* 澧炲姞涓€鐐归珮绾х殑鑳屾櫙绾圭悊鎰燂紝浣跨敤闈炲父寰急鐨勫緞鍚戞笎鍙?*/
-            background-image: radial-gradient(circle at top right, #e5e7eb 0%, transparent 40%);
             margin: 0;
-            padding: 60px 20px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            min-height: 100vh;
-            box-sizing: border-box;
+            height: 100vh;
         }
-
-        .container { 
-            width: 100%;
-            max-width: 960px; 
-            background: var(--card-bg); 
-            padding: 40px 50px; 
-            /* 澶у渾瑙掑拰鏌斿拰鐨勯珮绾ч槾褰?*/
-            border-radius: 24px; 
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            transition: transform 0.3s ease;
-        }
-
-        .container:hover {
-            transform: translateY(-2px);
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #f3f4f6;
-            padding-bottom: 20px;
-        }
-
-        h2 { 
-            color: var(--text-main); 
-            margin: 0;
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 14px;
-            font-weight: 400;
-        }
-
         #heatmap { 
             width: 100%; 
             height: 240px; 
         }
-
-        /* 鑷畾涔?Echarts 鎮诞鎻愮ず妗嗙殑 CSS */
         .custom-tooltip {
             background: rgba(17, 24, 39, 0.9) !important;
             backdrop-filter: blur(8px);
@@ -83,47 +35,90 @@
             padding: 12px 16px !important;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
         }
+        /* Tag 详情弹窗样式 */
+        #tagModal {
+            display: none; 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: white; 
+            padding: 24px; 
+            border-radius: 16px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+            z-index: 1000; 
+            width: 320px;
+            font-family: 'Inter', sans-serif;
+            border: 1px solid #e5e7eb;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
+            backdrop-filter: blur(2px);
+        }
+        .tag-badge {
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div>
-                <h2>Algorithm Training</h2>
-                <div class="subtitle">Daily Coding Activity Tracker</div>
-            </div>
-            <!-- 鍙充晶鍙互鐣欑櫧鎴栬€呮斁涓€涓綘鐨勪釜浜哄ご鍍?Logo -->
+    <div id="heatmap"></div>
+
+    <!-- 弹窗遮罩与主体 -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+    <div id="tagModal">
+        <h3 id="modalDate" style="margin-top:0; margin-bottom:12px; color:#111827;"></h3>
+        <div style="font-size: 14px; margin-bottom: 16px; color:#4b5563;">
+            <span style="display:inline-block; margin-right:16px;">✅ AC: <strong id="modalAC" style="color:#10b981;"></strong></span>
+            <span>❌ Try: <strong id="modalTry" style="color:#ef4444;"></strong></span>
         </div>
-        <div id="heatmap"></div>
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px; color:#374151;">训练标签:</div>
+        <div id="modalTags" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
+        <button onclick="closeModal()" style="margin-top:20px; width:100%; padding:10px; background:#f3f4f6; color:#4b5563; font-weight:600; border:none; border-radius:8px; cursor:pointer; transition:background 0.2s;">关闭</button>
     </div>
 
     <script>
         const chart = echarts.init(document.getElementById('heatmap'));
+        let globalData = {}; // 存储全局数据供点击事件调用
 
         fetch('data.json')
             .then(response => response.ok ? response.json() : Promise.reject('Failed to load'))
             .then(rawData => {
-                const chartData = Object.keys(rawData).map(date => [date, rawData[date].total]);
+                globalData = rawData;
+                
+                // 将数据转为 ECharts 数组格式，热力图深度基于 AC 数量
+                const chartData = Object.keys(rawData).map(date => {
+                    const acCount = rawData[date].ac !== undefined ? rawData[date].ac : (rawData[date].total || 0);
+                    return [date, acCount];
+                });
                 const currentYear = new Date().getFullYear().toString();
 
                 const option = {
                     tooltip: {
                         position: 'top',
-                        className: 'custom-tooltip', // 搴旂敤涓婇潰鍐欏ソ鐨勯珮绾ч粦瀹㈤鎮诞绐?
+                        className: 'custom-tooltip',
                         formatter: function (p) {
                             const date = p.data[0];
-                            const total = p.data[1];
                             const detail = rawData[date];
-                            if (!detail) return `${date}<br/>0 AC`;
+                            if (!detail) return `${date}<br/>No Record`;
+                            
+                            const ac = detail.ac !== undefined ? detail.ac : (detail.total || 0);
+                            const tries = detail.try || 0;
+
                             return `
                                 <div style="font-family:'Inter',sans-serif;">
                                     <div style="font-size:13px; color:#9ca3af; margin-bottom:6px;">${date}</div>
-                                    <div style="font-size:16px; font-weight:600; margin-bottom:8px;">Total AC: <span style="color:#10b981;">${total}</span></div>
-                                    <div style="font-size:12px; color:#d1d5db; display:flex; gap:12px;">
-                                        <span>CF: ${detail.codeforces || 0}</span>
-                                        <span>Luogu: ${detail.luogu || 0}</span>
-                                        <span>Nowcoder: ${detail.nowcoder || 0}</span>
-                                    </div>
+                                    <div style="font-size:15px; font-weight:600; margin-bottom:4px;">✅ AC: <span style="color:#10b981;">${ac}</span></div>
+                                    <div style="font-size:15px; font-weight:600; margin-bottom:8px;">❌ Try: <span style="color:#f87171;">${tries}</span></div>
+                                    <div style="font-size:11px; color:#d1d5db;">(点击方块查看 Tag 详情)</div>
                                 </div>
                             `;
                         }
@@ -132,30 +127,31 @@
                         type: 'piecewise',
                         orient: 'horizontal',
                         left: 'right',
-                        top: 0,
+                        bottom: 0,
                         itemWidth: 16,
                         itemHeight: 16,
                         itemGap: 6,
                         textStyle: { color: '#6b7280', fontSize: 13, fontFamily: 'Inter' },
+                        // 满足要求：3题及以上中等深度，5题及以上最深
                         pieces: [
-                            { min: 10, label: 'More', color: '#10b981' }, // 浣跨敤鏇寸幇浠ｇ殑鏄庝寒缈犵豢鑹?
-                            { min: 5, max: 9, label: ' ', color: '#34d399' },
-                            { min: 1, max: 4, label: ' ', color: '#a7f3d0' },
-                            { value: 0, label: 'Less', color: '#f3f4f6' }
+                            { min: 5, label: 'More', color: '#047857' },    
+                            { min: 3, max: 4, label: ' ', color: '#10b981' }, 
+                            { min: 1, max: 2, label: ' ', color: '#6ee7b7' }, 
+                            { value: 0, label: 'Less', color: '#f3f4f6' }     
                         ],
                         outOfRange: { color: '#f3f4f6' }
                     },
                     calendar: {
-                        top: 70,
-                        left: 50,
+                        top: 40,
+                        left: 80,
                         right: 10,
                         cellSize: ['auto', 18],
                         range: currentYear,
                         itemStyle: {
-                            borderWidth: 4, // 澧炲姞鍧椾笌鍧椾箣闂寸殑闂磋窛鎰?
+                            borderWidth: 4,
                             borderColor: '#ffffff',
                             color: '#f3f4f6',
-                            borderRadius: 4 // 缁欐瘡涓皬鏂瑰潡鍔犱笂寰渾瑙?
+                            borderRadius: 4 
                         },
                         splitLine: { show: false },
                         yearLabel: { show: false },
@@ -180,12 +176,47 @@
                     }
                 };
                 chart.setOption(option);
-            })
-            .catch(() => {
-                document.getElementById('heatmap').innerHTML = '<p style="text-align:center;color:#ef4444;padding-top:50px;">Failed to load training data.</p>';
+
+                // 绑定点击事件触发弹窗
+                chart.on('click', function (params) {
+                    if (params.componentType === 'series') {
+                        const date = params.data[0];
+                        openModal(date, globalData[date]);
+                    }
+                });
             });
         
         window.addEventListener('resize', () => chart.resize());
+
+        function openModal(date, data) {
+            if (!data) return;
+            
+            document.getElementById('modalDate').innerText = date;
+            document.getElementById('modalAC').innerText = data.ac !== undefined ? data.ac : (data.total || 0);
+            document.getElementById('modalTry').innerText = data.try || 0;
+            
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = '';
+            
+            if (data.tags && data.tags.length > 0) {
+                data.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'tag-badge';
+                    span.innerText = tag;
+                    tagsContainer.appendChild(span);
+                });
+            } else {
+                tagsContainer.innerHTML = '<span style="color:#9ca3af; font-size:13px;">无具体标签记录</span>';
+            }
+
+            document.getElementById('modalOverlay').style.display = 'block';
+            document.getElementById('tagModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('tagModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>
