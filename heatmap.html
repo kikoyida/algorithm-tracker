@@ -21,7 +21,7 @@
         }
         #heatmap { 
             width: 100%; 
-            height: 240px; 
+            height: 320px; 
         }
         .custom-tooltip {
             background: rgba(17, 24, 39, 0.9) !important;
@@ -100,7 +100,7 @@
 
                 const option = {
                     tooltip: {
-                        position: 'bottom',    // 强制向下弹出
+                        position: 'top',
                         confine: true,         // 防切割
                         className: 'custom-tooltip',
                         formatter: function (p) {
@@ -140,7 +140,7 @@
                         outOfRange: { color: '#f3f4f6' }
                     },
                     calendar: {
-                        top: 40,
+                        top: 100,
                         left: 80,
                         right: 10,
                         cellSize: ['auto', 18],
