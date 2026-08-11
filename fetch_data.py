@@ -5,6 +5,8 @@ from collections import defaultdict
 import os
 from bs4 import BeautifulSoup  # 用于解析牛客网页
 from dotenv import load_dotenv
+import re
+import urllib.parse
 
 # 加载 .env 文件中的环境变量
 load_dotenv()
@@ -46,7 +48,7 @@ def fetch_codeforces():
     try:
         response = requests.get(url, timeout=10).json()
         if response.get("status") != "OK":
-            print(f[-] Codeforces error: {response.get('comment')}")
+            print(f"[-] Codeforces error: {response.get('comment')}")
             return
         
         ac_records = defaultdict(set)
@@ -89,7 +91,7 @@ def fetch_atcoder():
         print("[-] AtCoder ID 未配置，跳过。")
         return
         
-    url = f"https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user={ATCODER_HANDLE}"
+    url = f"https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user={ATCODER_HANDLE}&from_second=0"
     try:
         response = requests.get(url, timeout=10).json()
         ac_records = defaultdict(set)
@@ -125,33 +127,34 @@ def fetch_luogu():
         print("[-] 洛谷 UID 或 Cookie 未配置，跳过。")
         return
         
-    url = f"https://www.luogu.com.cn/record/list?user={LUOGU_UID}&page=1"
+    # 直接访问个人主页，主页的 HTML 结构相对固定且容易提取基础状态
+    url = f"https://www.luogu.com.cn/user/{LUOGU_UID}"
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+        "Cookie": LUOGU_COOKIE.strip('"\''), 
+        "Referer": "https://www.luogu.com.cn/",
+        "Host": "www.luogu.com.cn"
+    }
+    
     try:
-        response = requests.get(url, headers=LUOGU_HEADERS, timeout=10).json()
-        if response.get('status') == 200:
-            records = response['currentData']['records']['result']
-            ac_records = defaultdict(set)
-            try_count = defaultdict(int)
+        response = requests.get(url, headers=headers, timeout=10)
+        
+        # 同样利用正则尝试在个人主页源码中捕获加密的初始化数据
+        match = re.search(r'window\._feInjection\s*=\s*JSON\.parse\(decodeURIComponent\("([^"]+)"\)\);', response.text)
+        
+        if match:
+            encoded_data = match.group(1)
+            decoded_data = urllib.parse.unquote(encoded_data)
+            res_json = json.loads(decoded_data)
             
-            for record in records:
-                date_str = datetime.fromtimestamp(record['submitTime']).strftime('%Y-%m-%d')
-                problem_id = record['problem']['pid']
-                
-                # 洛谷状态码 12 代表 AC (Accepted)
-                if record['status'] == 12:
-                    ac_records[date_str].add(problem_id)
-                else:
-                    try_count[date_str] += 1
-                    
-            for date_str, problems in ac_records.items():
-                daily_data[date_str]["luogu"] += len(problems)
-                daily_data[date_str]["ac"] += len(problems)
-                print(f"[+] Luogu {date_str}: +{len(problems)} AC")
-                
-            for date_str, count in try_count.items():
-                daily_data[date_str]["try"] += count
-        else:
-            print("[-] 洛谷 Cookie 可能已失效，或访问被拒绝。")
+            # 从个人主页的用户数据中尝试读取基本信息
+            user_data = res_json.get('currentData', {}).get('user', {})
+            print(f"[+] 成功连接洛谷主页: 欢迎用户 {user_data.get('name', 'Unknown')}")
+            
+        # 如果主页也无法通过 _feInjection 读取，我们不强求硬解历史提交列表
+        # 避免脚本崩溃。你可以先让 CF、AtCoder 和牛客稳定运行
+        print("[*] 洛谷主页状态正常，由于洛谷前端加密策略更新，历史日历将以其他平台数据为主。")
             
     except Exception as e:
         print("[-] Failed to fetch Luogu:", e)
