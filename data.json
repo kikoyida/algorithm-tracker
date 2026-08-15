@@ -26,8 +26,8 @@
         "ac": 1,
         "try": 1,
         "tags": [
-            "greedy",
-            "sortings"
+            "sortings",
+            "greedy"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -61,8 +61,8 @@
         "ac": 4,
         "try": 7,
         "tags": [
-            "greedy",
             "implementation",
+            "greedy",
             "games"
         ],
         "codeforces": 2,
@@ -97,9 +97,9 @@
         "ac": 2,
         "try": 2,
         "tags": [
-            "greedy",
             "bitmasks",
-            "sortings"
+            "sortings",
+            "greedy"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -111,8 +111,8 @@
         "ac": 1,
         "try": 7,
         "tags": [
-            "greedy",
-            "implementation"
+            "implementation",
+            "greedy"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -124,8 +124,8 @@
         "ac": 5,
         "try": 8,
         "tags": [
-            "math",
             "implementation",
+            "math",
             "brute force",
             "*special",
             "dp",
@@ -151,10 +151,10 @@
         "ac": 2,
         "try": 0,
         "tags": [
+            "implementation",
             "greedy",
-            "constructive algorithms",
             "math",
-            "implementation"
+            "constructive algorithms"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -179,10 +179,10 @@
             "implementation",
             "math",
             "brute force",
-            "games",
+            "constructive algorithms",
             "sortings",
             "greedy",
-            "constructive algorithms"
+            "games"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -194,8 +194,8 @@
         "ac": 3,
         "try": 0,
         "tags": [
-            "math",
             "implementation",
+            "math",
             "brute force",
             "number theory",
             "greedy"
@@ -222,9 +222,9 @@
         "ac": 2,
         "try": 2,
         "tags": [
+            "*special",
             "implementation",
             "strings",
-            "*special",
             "graph matchings"
         ],
         "codeforces": 2,
@@ -237,8 +237,8 @@
         "ac": 3,
         "try": 1,
         "tags": [
-            "math",
             "implementation",
+            "math",
             "number theory",
             "greedy",
             "chinese remainder theorem"
@@ -266,14 +266,14 @@
         "ac": 2,
         "try": 6,
         "tags": [
-            "binary search",
-            "brute force",
-            "sortings",
-            "expression parsing",
             "implementation",
             "math",
+            "two pointers",
+            "expression parsing",
+            "brute force",
             "schedules",
-            "two pointers"
+            "sortings",
+            "binary search"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -285,10 +285,10 @@
         "ac": 2,
         "try": 7,
         "tags": [
+            "sortings",
             "greedy",
-            "constructive algorithms",
             "strings",
-            "sortings"
+            "constructive algorithms"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -324,10 +324,10 @@
         "ac": 2,
         "try": 2,
         "tags": [
-            "greedy",
-            "brute force",
             "bitmasks",
-            "sortings"
+            "sortings",
+            "brute force",
+            "greedy"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -339,13 +339,13 @@
         "ac": 4,
         "try": 5,
         "tags": [
-            "math",
-            "implementation",
-            "brute force",
             "trees",
+            "implementation",
+            "math",
+            "brute force",
+            "constructive algorithms",
             "dp",
-            "greedy",
-            "constructive algorithms"
+            "greedy"
         ],
         "codeforces": 4,
         "atcoder": 0,
@@ -357,9 +357,9 @@
         "ac": 1,
         "try": 1,
         "tags": [
-            "math",
+            "bitmasks",
             "brute force",
-            "bitmasks"
+            "math"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -371,14 +371,14 @@
         "ac": 4,
         "try": 0,
         "tags": [
-            "data structures",
-            "binary search",
-            "brute force",
-            "constructive algorithms",
             "implementation",
             "math",
+            "constructive algorithms",
+            "two pointers",
             "greedy",
-            "two pointers"
+            "brute force",
+            "data structures",
+            "binary search"
         ],
         "codeforces": 4,
         "atcoder": 0,
@@ -391,8 +391,8 @@
         "try": 1,
         "tags": [
             "implementation",
-            "constructive algorithms",
-            "sortings"
+            "sortings",
+            "constructive algorithms"
         ],
         "codeforces": 3,
         "atcoder": 0,
@@ -435,10 +435,10 @@
         "try": 2,
         "tags": [
             "brute force",
-            "games",
+            "schedules",
             "binary search",
             "greedy",
-            "schedules"
+            "games"
         ],
         "codeforces": 3,
         "atcoder": 0,
@@ -450,8 +450,8 @@
         "ac": 1,
         "try": 0,
         "tags": [
-            "greedy",
-            "binary search"
+            "binary search",
+            "greedy"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -475,16 +475,26 @@
         "ac": 3,
         "try": 0,
         "tags": [
-            "combinatorics",
             "math",
-            "number theory",
+            "constructive algorithms",
             "dp",
-            "constructive algorithms"
+            "number theory",
+            "combinatorics"
         ],
         "codeforces": 3,
         "atcoder": 0,
         "luogu": 0,
         "nowcoder": 0,
         "total": 3
+    },
+    "2026-08-15": {
+        "ac": 4,
+        "try": 1,
+        "tags": [],
+        "codeforces": 0,
+        "atcoder": 4,
+        "luogu": 0,
+        "nowcoder": 0,
+        "total": 4
     }
 }
