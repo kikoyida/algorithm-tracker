@@ -1,3 +1,14 @@
 {
-  "sessions": []
+  "sessions": [
+    {
+      "id": "f1a8b140-d6fb-49f1-b771-cc6d779e0f0a",
+      "taskName": "Untitled focus",
+      "startedAt": "2026-08-20T18:23:30.213Z",
+      "completedAt": "2026-08-20T18:24:36.680Z",
+      "updatedAt": "2026-08-20T18:24:36.680Z",
+      "localDate": "2026-08-21",
+      "durationSeconds": 66,
+      "completed": false
+    }
+  ]
 }
