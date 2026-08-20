@@ -19,12 +19,20 @@ on:
         description: ISO completion timestamp
         required: true
         type: string
+      updated_at:
+        description: ISO snapshot timestamp
+        required: true
+        type: string
       local_date:
         description: Local YYYY-MM-DD date
         required: true
         type: string
       duration_seconds:
-        description: Completed focus duration in seconds
+        description: Actual focus duration in seconds
+        required: true
+        type: string
+      completed:
+        description: Whether the planned session reached zero
         required: true
         type: string
 
@@ -49,8 +57,10 @@ jobs:
           FOCUS_TASK_NAME: ${{ inputs.task_name }}
           FOCUS_STARTED_AT: ${{ inputs.started_at }}
           FOCUS_COMPLETED_AT: ${{ inputs.completed_at }}
+          FOCUS_UPDATED_AT: ${{ inputs.updated_at }}
           FOCUS_LOCAL_DATE: ${{ inputs.local_date }}
           FOCUS_DURATION_SECONDS: ${{ inputs.duration_seconds }}
+          FOCUS_COMPLETED: ${{ inputs.completed }}
         run: python record_focus.py
       - name: Commit focus data
         run: |

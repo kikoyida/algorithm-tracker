@@ -37,8 +37,10 @@ def build_session():
         "taskName": required("FOCUS_TASK_NAME")[:80],
         "startedAt": parse_timestamp("FOCUS_STARTED_AT"),
         "completedAt": parse_timestamp("FOCUS_COMPLETED_AT"),
+        "updatedAt": parse_timestamp("FOCUS_UPDATED_AT"),
         "localDate": local_date,
         "durationSeconds": duration,
+        "completed": required("FOCUS_COMPLETED").lower() == "true",
     }
 
 
@@ -52,16 +54,26 @@ def load_sessions():
 def main():
     incoming = build_session()
     sessions = load_sessions()
-    if any(item.get("id") == incoming["id"] for item in sessions):
-        print(f"Focus session {incoming['id']} already exists")
-        return
-    sessions.append(incoming)
+    existing_index = next((index for index, item in enumerate(sessions) if item.get("id") == incoming["id"]), None)
+    if existing_index is None:
+        sessions.append(incoming)
+        action = "Stored"
+    else:
+        existing = sessions[existing_index]
+        is_newer = incoming["updatedAt"] > existing.get("updatedAt", existing.get("completedAt", ""))
+        is_longer = incoming["durationSeconds"] > int(existing.get("durationSeconds", 0))
+        is_completion = incoming["completed"] and not existing.get("completed", False)
+        if not (is_newer or is_longer or is_completion):
+            print(f"Focus session {incoming['id']} is already current")
+            return
+        sessions[existing_index] = incoming
+        action = "Updated"
     sessions.sort(key=lambda item: item.get("completedAt", ""))
     DATA_PATH.write_text(
         json.dumps({"sessions": sessions[-5000:]}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"Stored focus session {incoming['id']}")
+    print(f"{action} focus session {incoming['id']}")
 
 
 if __name__ == "__main__":
