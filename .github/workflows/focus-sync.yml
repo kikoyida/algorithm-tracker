@@ -1,0 +1,61 @@
+name: Sync Ethereal Focus session
+
+on:
+  workflow_dispatch:
+    inputs:
+      session_id:
+        description: Unique focus session id
+        required: true
+        type: string
+      task_name:
+        description: Focus task name
+        required: true
+        type: string
+      started_at:
+        description: ISO start timestamp
+        required: true
+        type: string
+      completed_at:
+        description: ISO completion timestamp
+        required: true
+        type: string
+      local_date:
+        description: Local YYYY-MM-DD date
+        required: true
+        type: string
+      duration_seconds:
+        description: Completed focus duration in seconds
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ethereal-focus-sync
+  cancel-in-progress: false
+
+jobs:
+  store-session:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate and store session
+        env:
+          FOCUS_SESSION_ID: ${{ inputs.session_id }}
+          FOCUS_TASK_NAME: ${{ inputs.task_name }}
+          FOCUS_STARTED_AT: ${{ inputs.started_at }}
+          FOCUS_COMPLETED_AT: ${{ inputs.completed_at }}
+          FOCUS_LOCAL_DATE: ${{ inputs.local_date }}
+          FOCUS_DURATION_SECONDS: ${{ inputs.duration_seconds }}
+        run: python record_focus.py
+      - name: Commit focus data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add focus-data.json
+          git diff --staged --quiet || git commit -m "chore: sync Ethereal Focus session [skip ci]"
+          git push
