@@ -39,6 +39,16 @@
       "localDate": "2026-09-16",
       "durationSeconds": 1500,
       "completed": true
+    },
+    {
+      "id": "224eda1e-5ba4-43d1-813a-2b4e2fe87d30",
+      "taskName": "Untitled focus",
+      "startedAt": "2026-09-16T01:25:54.823Z",
+      "completedAt": "2026-09-16T01:48:27.398Z",
+      "updatedAt": "2026-09-16T01:48:27.398Z",
+      "localDate": "2026-09-16",
+      "durationSeconds": 1352,
+      "completed": false
     }
   ]
 }
