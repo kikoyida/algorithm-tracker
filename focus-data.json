@@ -54,11 +54,11 @@
       "id": "3198c86a-0499-41b4-8134-b98ded8df0eb",
       "taskName": "Untitled focus",
       "startedAt": "2026-09-19T15:35:23.779Z",
-      "completedAt": "2026-09-19T16:26:17.920Z",
-      "updatedAt": "2026-09-19T16:26:17.920Z",
+      "completedAt": "2026-09-19T16:27:31.891Z",
+      "updatedAt": "2026-09-19T16:27:31.891Z",
       "localDate": "2026-09-20",
-      "durationSeconds": 1427,
-      "completed": false
+      "durationSeconds": 1500,
+      "completed": true
     }
   ]
 }
