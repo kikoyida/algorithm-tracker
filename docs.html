@@ -86,6 +86,13 @@
     }
     .sidebar ul li a:hover { color: var(--ink); background: rgba(255,255,255,.72); transform: translateX(2px); }
     .sidebar ul li.active > a { color: var(--accent); background: var(--accent-soft); border-right: 0; }
+    .sidebar-nav .sidebar-algorithms { margin: 8px 0; }
+    .sidebar-nav .sidebar-algorithms summary { display: flex; align-items: center; justify-content: space-between; min-height: 38px; padding: 9px 10px; border-radius: 6px; color: var(--body); font-size: 13px; font-weight: 500; cursor: pointer; list-style: none; }
+    .sidebar-nav .sidebar-algorithms summary::-webkit-details-marker { display: none; }
+    .sidebar-nav .sidebar-algorithms summary::after { content: '+'; color: var(--quiet); font-size: 17px; line-height: 1; }
+    .sidebar-nav .sidebar-algorithms[open] summary::after { content: '−'; }
+    .sidebar-nav .sidebar-algorithms summary:hover { color: var(--ink); background: rgba(255,255,255,.72); }
+    .sidebar-nav .sidebar-algorithms ul { padding-left: 12px; }
 
     .app-nav { top: 29px; right: 38px; margin: 0; }
     .app-nav a { color: var(--muted); font: 500 12px/1 var(--mono); letter-spacing: .02em; }
@@ -185,15 +192,32 @@
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
       .reveal-block { opacity: 1; transform: none; }
     }
+    /* Shared silver-glass reading surface; navigation overlays the article. */
+    :root{--theme-color:#3157e8;--canvas:#f5f6f7;--paper:#fff;--paper-soft:#f8f9fa;--ink:#17191d;--body:#4e535b;--muted:#7f858d;--line:#dfe2e5;--accent:#3157e8;--accent-soft:#d6e1ff66}
+    body{background:var(--canvas);background-image:none}
+    .reading-header{position:fixed;inset:0 0 auto;z-index:40;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 28px 0 100px;border-bottom:1px solid #c8ccd173;background:#f7f8f9c9;backdrop-filter:blur(18px);font-size:12px}
+    .reading-header a{color:var(--ink);text-decoration:none}.reading-header span{color:var(--muted)}
+    .sidebar{z-index:50;top:68px;width:min(292px,88vw);background:#eff2f561;border-right:1px solid #ffffffc7;backdrop-filter:blur(19px) saturate(116%);transform:translateX(-104%);transition:transform .3s ease}
+    .sidebar::before{content:'k';font-family:Geist,sans-serif;letter-spacing:0}.sidebar ul li a:hover{transform:none;box-shadow:none}
+    body.close .sidebar{transform:translateX(-104%)}body.reader-nav-open .sidebar{transform:translateX(0)}
+    .sidebar-toggle{display:none}.reader-menu{position:fixed;z-index:60;top:17px;left:24px;padding:9px 12px;border:1px solid #ffffffc7;border-radius:8px;background:#f8f9fa8f;color:#20242a;cursor:pointer}
+    .content,body.close .content{left:0;padding-top:68px;transform:none;margin-left:0}
+    .markdown-section{max-width:900px;margin:0 auto;padding:56px 36px 100px}.markdown-section h1{color:var(--ink);letter-spacing:-.035em}.markdown-section pre{overflow:auto;border:1px solid var(--line);border-radius:10px;background:#eceff2}.github-corner{display:none}
+    @media(max-width:768px){body .content,body.close .content{left:0;transform:none}.markdown-section{padding:38px 20px 70px}.reading-header{padding-right:20px}.reading-header span{display:none}}
   </style>
 </head>
 <body>
+  <header class="reading-header"><a href="index.html">k / 返回主页</a><span>NOTES &amp; ALGORITHMS</span></header>
+  <button class="reader-menu" type="button" aria-expanded="false" aria-label="打开导航">菜单</button>
   <div id="app">正在整理训练记录…</div>
   <script>
     window.$docsify = {
       name: '',
       repo: 'kikoyida/algorithm-tracker',
-      homepage: 'README.md',
+      basePath: new URL('./', window.location.href).href,
+      homepage: 'basics.md',
+      relativePath: false,
+      alias: { '/.*/_sidebar.md': '/_sidebar.md' },
       loadSidebar: '_sidebar.md',
       subMaxLevel: 2,
       auto2top: true,
@@ -201,21 +225,16 @@
       search: { placeholder: '搜索知识库', noData: '没有找到相关内容', depth: 3 },
       plugins: [
         function (hook, vm) {
-          hook.afterEach(function (html) {
-            if (vm.route.path !== '/' && vm.route.path !== '/README') return html;
-            const year = new Date().getFullYear();
-            const panel = `
-              <section class="training-panel reveal-block" aria-label="${year} 年算法训练数据">
-                <div class="training-panel__bar">
-                  <span>${year} 年训练活动</span>
-                  <span class="training-panel__status">数据已连接</span>
-                </div>
-                <iframe src="heatmap.html?t=${Date.now()}" title="年度算法训练热力图" loading="eager"></iframe>
-              </section>`;
-            const marker = '<!--TRAINING_PANEL-->';
-            return html.includes(marker) ? html.replace(marker, panel) : panel + html;
-          });
           hook.doneEach(function () {
+            const algorithmGroup = document.querySelector('.sidebar-nav .sidebar-algorithms');
+            if (algorithmGroup) {
+              const currentPath = vm.route.path;
+              const activeLink = [...algorithmGroup.querySelectorAll('a')].find(link => link.getAttribute('href') === `#${currentPath}`);
+              if (activeLink) {
+                algorithmGroup.open = true;
+                activeLink.setAttribute('aria-current', 'page');
+              }
+            }
             const nodes = document.querySelectorAll('.reveal-block');
             if (!('IntersectionObserver' in window)) {
               nodes.forEach(node => node.classList.add('is-visible'));
@@ -234,6 +253,13 @@
         }
       ]
     };
+  </script>
+  <script>
+    const readerMenu=document.querySelector('.reader-menu');
+    function closeReaderMenu(){document.body.classList.remove('reader-nav-open');readerMenu.setAttribute('aria-expanded','false');readerMenu.textContent='菜单'}
+    readerMenu.addEventListener('click',()=>{const open=document.body.classList.toggle('reader-nav-open');readerMenu.setAttribute('aria-expanded',String(open));readerMenu.textContent=open?'关闭':'菜单'});
+    document.addEventListener('click',event=>{if(event.target.closest('.sidebar a'))closeReaderMenu()});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape')closeReaderMenu()});
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
