@@ -229,6 +229,7 @@
   <header class="reading-header"><a href="index.html">k / 返回主页</a><span>NOTES &amp; ALGORITHMS</span></header>
   <button class="reader-menu" type="button" aria-expanded="false" aria-label="打开导航">菜单</button>
   <div id="app">正在整理训练记录…</div>
+  <script src="solution-index.js?v=1"></script>
   <script>
     window.$docsify = {
       name: '',
@@ -244,9 +245,13 @@
       search: { placeholder: '搜索知识库', noData: '没有找到相关内容', depth: 3 },
       plugins: [
         function (hook, vm) {
+          hook.beforeEach(function (content) {
+            return window.solutionIndex.render(content, vm.route.path);
+          });
           hook.doneEach(function () {
             const algorithmGroup = document.querySelector('.sidebar-nav .sidebar-algorithms');
             if (algorithmGroup) {
+              if (vm.route.path.startsWith('/solutions')) algorithmGroup.open = true;
               const currentPath = vm.route.path;
               const activeLink = [...algorithmGroup.querySelectorAll('a')].find(link => link.getAttribute('href') === `#${currentPath}`);
               if (activeLink) {

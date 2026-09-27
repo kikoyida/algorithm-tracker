@@ -5,7 +5,6 @@ OVERVIEW
 
 - <a href="index.html#activity" data-noop>活动记录</a>
 - <a href="index.html#projects" data-noop>项目</a>
-- <a href="index.html#solutions" data-noop>题解</a>
 
 PROFILE
 
@@ -17,6 +16,7 @@ LEARNING
 <details class="sidebar-algorithms">
 <summary>算法</summary>
 <ul>
+<li><a href="#/solutions">全部题解</a></li>
 <li><a href="#/language">语言基础</a></li>
 <li><a href="#/basics">算法基础</a></li>
 <li><a href="#/search">搜索</a></li>
