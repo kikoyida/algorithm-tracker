@@ -1,8 +1,8 @@
-# 技术美术数学基础
+# TA 数学基础
 
 ## 原始手写笔记
 
-[![技术美术数学手写笔记](assets/notes/technical-art-math.png)](assets/notes/technical-art-math.png ":ignore")
+[![TA 数学手写笔记](assets/notes/technical-art-math.png)](assets/notes/technical-art-math.png ":ignore")
 
 [点击查看高清原图](assets/notes/technical-art-math.png ":ignore")
 
@@ -253,14 +253,6 @@ rotated += 0.5;
 ```
 
 记忆顺序：减去中心 → 旋转 → 加回中心。
-
-## 下一步练习
-
-- [ ] 用 `dot` 根据表面朝向生成黑白明暗。
-- [ ] 用 `1 - dot` 制作边缘光。
-- [ ] 用高度值和 `smoothstep` 混合草地与积雪。
-- [ ] 用 `uv + time * speed` 制作滚动贴图。
-- [ ] 用噪声、`step` 和 `smoothstep` 制作两种溶解边缘。
 
 ## 速查
 

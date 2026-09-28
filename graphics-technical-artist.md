@@ -8,8 +8,8 @@
 <div class="article-index__bar"><span>学习笔记</span><span>02 ARTICLES</span></div>
 <a class="article-entry" href="#/graphics-technical-artist/math-basics">
 <div>
-<div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>技术美术</span><span>Shader</span></div>
-<h3>技术美术数学基础</h3>
+<div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>TA</span><span>Shader</span></div>
+<h3>TA 数学基础</h3>
 <p>从归一化、点积和叉积到 lerp、遮罩与 UV 变换，附手写笔记和 HLSL 示例。</p>
 <span class="article-entry__read">阅读笔记</span>
 </div>
