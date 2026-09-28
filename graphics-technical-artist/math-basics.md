@@ -1,11 +1,5 @@
 # TA 数学基础
 
-## 原始手写笔记
-
-[![TA 数学手写笔记](assets/notes/technical-art-math.png)](assets/notes/technical-art-math.png ":ignore")
-
-[点击查看高清原图](assets/notes/technical-art-math.png ":ignore")
-
 ## 学习地图
 
 - `normalize`：只保留方向，把向量长度变成 1。
