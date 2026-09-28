@@ -15,6 +15,10 @@ window.solutionIndex = (() => {
     path: 'solutions/fjcpc2026-b', title: '2026 FJCPC B · 排考场',
     tags: ['二分答案', '贪心', '整除与取整'],
     summary: '判断无穷大情况，推导教室容量公式，再用二分答案最大化最小列间距。'
+  }, {
+    path: 'graphics-technical-artist/math-basics', title: '技术美术数学基础',
+    tags: ['数学', '计算几何', '技术美术', 'Shader'],
+    summary: '从归一化、点积和叉积到 lerp、遮罩与 UV 变换，附手写笔记和 HLSL 示例。'
   }];
   const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const memberships = article => categories.filter(category => category.tags.some(tag => article.tags.includes(tag)));
