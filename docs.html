@@ -230,6 +230,7 @@
   <button class="reader-menu" type="button" aria-expanded="false" aria-label="打开导航">菜单</button>
   <div id="app">正在整理训练记录…</div>
   <script src="solution-index.js?v=3"></script>
+  <script src="journal-index.js?v=1"></script>
   <script>
     window.$docsify = {
       name: '',
@@ -246,7 +247,7 @@
       plugins: [
         function (hook, vm) {
           hook.beforeEach(function (content) {
-            return window.solutionIndex.render(content, vm.route.path);
+            return window.journalIndex.render(window.solutionIndex.render(content, vm.route.path), vm.route.path);
           });
           hook.doneEach(function () {
             const algorithmGroup = document.querySelector('.sidebar-nav .sidebar-algorithms');

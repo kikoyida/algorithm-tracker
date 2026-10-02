@@ -5,7 +5,7 @@ OVERVIEW
 
 - <a href="index.html#activity" data-noop>活动记录</a>
 - <a href="index.html#projects" data-noop>项目</a>
-- <a href="index.html#journal" data-noop>日志</a>
+- [日志](journal.md)
 
 PROFILE
 
