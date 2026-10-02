@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-02', title: 'SP 材质、焦散 HLSL 与作品集规划', summary: 'SP 岩石与海床材质、同模型批量赋材质工具、焦散深度与范围遮罩，以及技术美术作品集规划。' },
     { date: '2026-10-01', title: '水下场景灰模、焦散材质调试', summary: '层叠岩台场景参考、Blender 岩石与 UE 灰模，以及焦散效果的接入和强度调整计划。' },
     { date: '2026-09-30', title: 'UE 材质练习、LogSigmoid 算子优化', summary: '石化材质、法线烘焙基础、消防栓重做计划，以及算子评测和随机头像功能。' },
     { date: '2026-09-29', title: '消防栓模型修整、Aervox 界面调整', summary: '接口与倒角排查、底座拓扑修整，以及标准模式和陪伴模式的界面实践。' },
