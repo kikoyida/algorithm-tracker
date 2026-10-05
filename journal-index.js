@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-04', title: '水下光柱调试、Blender 建模操作', summary: '水下光柱与后处理排查、焦散遮罩和阶段备份，以及 Blender 缩放、布尔操作与渲染管线基础。' },
     { date: '2026-10-03', title: '水下光照调试、色块绘画', summary: '水下场景整理、焦散与体积光排查、色块绘画，以及课程和后续学习安排。' },
     { date: '2026-10-02', title: 'SP 材质、焦散 HLSL 与作品集规划', summary: 'SP 岩石与海床材质、同模型批量赋材质工具、焦散深度与范围遮罩，以及技术美术作品集规划。' },
     { date: '2026-10-01', title: '水下场景灰模、焦散材质调试', summary: '层叠岩台场景参考、Blender 岩石与 UE 灰模，以及焦散效果的接入和强度调整计划。' },
