@@ -19,6 +19,10 @@ window.solutionIndex = (() => {
     path: 'graphics-technical-artist/math-basics', title: 'TA 数学基础',
     tags: ['数学', '计算几何', 'TA', 'Shader'],
     summary: '从归一化、点积和叉积到 lerp、遮罩与 UV 变换，附手写笔记和 HLSL 示例。'
+  }, {
+    path: 'graphics-technical-artist/essence-linear-algebra', title: '线性代数的本质：向量、基向量与矩阵变换',
+    tags: ['数学', '计算几何', '线性代数', 'Graphics'],
+    summary: '按课程第 1–3 课整理向量、张成空间、线性相关与基，以及二维矩阵的几何含义，保留课程截图与算例。'
   }];
   const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const memberships = article => categories.filter(category => category.tags.some(tag => article.tags.includes(tag)));

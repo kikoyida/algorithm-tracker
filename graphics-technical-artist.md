@@ -5,7 +5,16 @@
 以 Blender 与 Unreal Engine 为主要实践工具，记录图形学基础、Shader、场景制作与自动化工具的学习过程。
 
 <div class="article-index">
-<div class="article-index__bar"><span>学习笔记</span><span>02 ARTICLES</span></div>
+<div class="article-index__bar"><span>学习笔记</span><span>03 ARTICLES</span></div>
+<a class="article-entry" href="#/graphics-technical-artist/essence-linear-algebra">
+<div>
+<div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>线性代数</span><span>Graphics</span></div>
+<h3>线性代数的本质：向量、基向量与矩阵变换</h3>
+<p>按课程第 1–3 课整理向量、张成空间、线性相关与基，以及二维矩阵的几何含义，保留课程截图与算例。</p>
+<span class="article-entry__read">阅读笔记</span>
+</div>
+<span class="article-entry__arrow" aria-hidden="true">↗</span>
+</a>
 <a class="article-entry" href="#/graphics-technical-artist/math-basics">
 <div>
 <div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>TA</span><span>Shader</span></div>
