@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-08', title: 'UV 与 SP 材质练习、透视投影', summary: '多零件 UV 与纹理分配、控制箱 SP 材质和模型排错，以及透视投影、MVP、近裁剪面与 FOV 的学习。' },
     { date: '2026-10-07', title: 'UV 展开、挤出操作与 PBR 资产计划', summary: 'UV 展开与练习素材、两种挤出操作的区别，以及完整 PBR 资产制作和作品集方向的规划。' },
     { date: '2026-10-05', title: '线性代数、深度缓冲与模型拓扑', summary: '线性代数前 3 课、张成空间与线性无关、Z-buffer 和模型拓扑，以及多进程通信题的学习。' },
     { date: '2026-10-04', title: '水下光柱调试、Blender 建模操作', summary: '水下光柱与后处理排查、焦散遮罩和阶段备份，以及 Blender 缩放、布尔操作与渲染管线基础。' },
