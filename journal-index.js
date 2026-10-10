@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-10', title: '着色器、矩阵与透视投影', summary: '着色器类型与渲染管线、二维和三维矩阵练习、MVP 与齐次坐标，以及投影笔记整理、深度映射和遮挡判断。' },
     { date: '2026-10-09', title: '矩阵复习、LOD 与 QEM', summary: '透视投影与齐次坐标复习、性能预算驱动的 LOD Demo 讨论，以及 QEM 二维误差计算、偏导与凸函数的入门学习。' },
     { date: '2026-10-08', title: 'UV 与 SP 材质练习、透视投影', summary: '多零件 UV 与纹理分配、控制箱 SP 材质和模型排错，以及透视投影、MVP、近裁剪面与 FOV 的学习。' },
     { date: '2026-10-07', title: 'UV 展开、挤出操作与 PBR 资产计划', summary: 'UV 展开与练习素材、两种挤出操作的区别，以及完整 PBR 资产制作和作品集方向的规划。' },
