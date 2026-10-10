@@ -16,6 +16,10 @@ window.solutionIndex = (() => {
     tags: ['二分答案', '贪心', '整除与取整'],
     summary: '判断无穷大情况，推导教室容量公式，再用二分答案最大化最小列间距。'
   }, {
+    path: 'graphics-technical-artist/view-transform-perspective-projection', title: '视图变换与透视投影',
+    tags: ['数学', '计算几何', '图形学', '渲染管线', '学习笔记'],
+    summary: '从相机世界变换的逆到相似三角形、FOV、NDC 与透视除法，保留原笔记推导和两张配图。'
+  }, {
     path: 'graphics-technical-artist/math-basics', title: 'TA 数学基础',
     tags: ['数学', '计算几何', 'TA', 'Shader'],
     summary: '从归一化、点积和叉积到 lerp、遮罩与 UV 变换，附手写笔记和 HLSL 示例。'

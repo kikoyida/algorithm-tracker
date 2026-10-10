@@ -5,7 +5,16 @@
 以 Blender 与 Unreal Engine 为主要实践工具，记录图形学基础、Shader、场景制作与自动化工具的学习过程。
 
 <div class="article-index">
-<div class="article-index__bar"><span>学习笔记</span><span>03 ARTICLES</span></div>
+<div class="article-index__bar"><span>学习笔记</span><span>04 ARTICLES</span></div>
+<a class="article-entry" href="#/graphics-technical-artist/view-transform-perspective-projection">
+<div>
+<div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>图形学</span><span>渲染管线</span><span>学习笔记</span></div>
+<h3>视图变换与透视投影</h3>
+<p>从相机世界变换的逆到相似三角形、FOV、NDC 与透视除法，保留原笔记推导和两张配图。</p>
+<span class="article-entry__read">阅读笔记</span>
+</div>
+<span class="article-entry__arrow" aria-hidden="true">↗</span>
+</a>
 <a class="article-entry" href="#/graphics-technical-artist/essence-linear-algebra">
 <div>
 <div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>线性代数</span><span>Graphics</span></div>

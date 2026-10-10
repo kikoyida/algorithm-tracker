@@ -28,6 +28,25 @@ assert(content.includes(imageUrl), 'Screenshot URL must be absolute for nested D
 assert(fs.existsSync(path.join(root, 'assets/notes/linear-algebra-basis-matrix.png')));
 const landing = fs.readFileSync(path.join(root, 'graphics-technical-artist.md'), 'utf8');
 assert(landing.includes(`#/${route}`));
-assert.equal((landing.match(/class="article-entry"/g) || []).length, 3);
-assert(landing.includes('03 ARTICLES'));
-console.log('Passed: Graphics entry, course order, definitions, math/geometry memberships, screenshot path.');
+assert.equal((landing.match(/class="article-entry"/g) || []).length, 4);
+assert(landing.includes('04 ARTICLES'));
+const projectionRoute = 'graphics-technical-artist/view-transform-perspective-projection';
+const projectionArticle = index.articles.find(entry => entry.path === projectionRoute);
+assert(projectionArticle, 'Projection note must be registered');
+assert.deepEqual(Array.from(index.memberships(projectionArticle), category => category.path), ['math', 'geometry']);
+assert(landing.includes(`#/${projectionRoute}`));
+for (const category of ['math', 'geometry']) {
+  assert(index.render('# category', `/${category}`).includes(`#/${projectionRoute}`));
+}
+const projectionContent = fs.readFileSync(path.join(root, `${projectionRoute}.md`), 'utf8');
+assert(projectionContent.startsWith('# 视图变换与透视投影'));
+assert(!projectionContent.includes('> [!'), 'Convert Obsidian callout markers for web reading');
+assert(projectionContent.includes('\\boxed{V=C^{-1}}'));
+assert(projectionContent.includes('\\triangle OAP\'\\sim\\triangle OCP'));
+const projectionImages = [...projectionContent.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(match => match[1]);
+assert.equal(projectionImages.length, 2);
+for (const image of projectionImages) {
+  assert(image.startsWith('https://kikoyida.github.io/algorithm-tracker/assets/notes/'));
+  assert(fs.existsSync(path.join(root, new URL(image).pathname.replace('/algorithm-tracker/', ''))));
+}
+console.log('Passed: Graphics entries, course order, definitions, math/geometry memberships, projection note and images.');
