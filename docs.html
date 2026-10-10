@@ -222,6 +222,10 @@
     .article-entry__tags{display:flex;gap:8px;flex-wrap:wrap}.article-entry__tags span{padding:4px 8px;border:1px solid #d4dce5;border-radius:5px;color:#495b71;background:#edf1f6;font-size:10px;line-height:1.5}
     .markdown-section .article-entry h3{margin:18px 0 10px;color:#202b38;font-size:21px;line-height:1.45;letter-spacing:-.02em}.markdown-section .article-entry p{margin:0;color:#596575;font-size:13px;font-weight:400}
     .article-entry__read{display:block;margin-top:24px;color:#425d7c;font-size:11px}.article-entry__arrow{align-self:center;color:#536981;font-size:23px}
+    .journal-navigation{margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}
+    .markdown-section .journal-back{display:inline-flex;align-items:center;gap:10px;min-height:44px;box-sizing:border-box;padding:10px 16px;border:1px solid #ccd5df;border-radius:10px;background:#ffffffa6;color:#344b66;font-size:14px;line-height:1.5;text-decoration:none;transition:border-color .18s,background .18s}
+    .markdown-section .journal-back:hover{border-color:#8b9fb6;background:#fff;text-decoration:none}
+    .markdown-section .journal-back:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
     @media(max-width:560px){.markdown-section .article-entry{padding:20px;gap:12px}.markdown-section .article-entry h3{font-size:18px}}
   </style>
 </head>
@@ -230,7 +234,7 @@
   <button class="reader-menu" type="button" aria-expanded="false" aria-label="打开导航">菜单</button>
   <div id="app">正在整理训练记录…</div>
   <script src="solution-index.js?v=4"></script>
-  <script src="journal-index.js?v=7"></script>
+  <script src="journal-index.js?v=8"></script>
   <script>
     window.$docsify = {
       name: '',

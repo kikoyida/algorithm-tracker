@@ -17,7 +17,14 @@ assert.equal((archive.match(/class="article-entry"/g) || []).length, index.entri
 for (const entry of index.entries) {
   assert(fs.existsSync(path.join(root, 'journal', `${entry.date}.md`)));
   assert(archive.includes(`#/journal/${entry.date}`));
-  assert(index.render('article', `/journal/${entry.date}`).includes('返回全部日志'));
+  const article = index.render('article', `/journal/${entry.date}`);
+  assert.match(article, /<nav class="journal-navigation" aria-label="日志导航">/);
+  assert.match(article, /<a class="journal-back" href="#\/journal">/,
+    'Use a raw HTML route link: Docsify rewrites Markdown hash links as article anchors.');
+  assert(article.includes('返回全部日志'));
+  assert(!article.includes('[返回全部日志](#/journal)'));
+  assert.equal((article.match(/class="journal-back"/g) || []).length, 1);
+  assert.equal(index.render('article', `/journal/${entry.date}.md`), article);
 }
 assert.equal(index.render('unchanged', '/solutions'), 'unchanged');
 assert.equal(index.render('unchanged', '/graphics-technical-artist'), 'unchanged');

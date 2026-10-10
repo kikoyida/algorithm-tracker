@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-09', title: '矩阵复习、LOD 与 QEM', summary: '透视投影与齐次坐标复习、性能预算驱动的 LOD Demo 讨论，以及 QEM 二维误差计算、偏导与凸函数的入门学习。' },
     { date: '2026-10-08', title: 'UV 与 SP 材质练习、透视投影', summary: '多零件 UV 与纹理分配、控制箱 SP 材质和模型排错，以及透视投影、MVP、近裁剪面与 FOV 的学习。' },
     { date: '2026-10-07', title: 'UV 展开、挤出操作与 PBR 资产计划', summary: 'UV 展开与练习素材、两种挤出操作的区别，以及完整 PBR 资产制作和作品集方向的规划。' },
     { date: '2026-10-05', title: '线性代数、深度缓冲与模型拓扑', summary: '线性代数前 3 课、张成空间与线性无关、Z-buffer 和模型拓扑，以及多进程通信题的学习。' },
@@ -21,7 +22,8 @@ window.journalIndex = (() => {
   function render(content, route) {
     const current = route.replace(/^\//, '').replace(/\.md$/, '');
     if (current === 'journal') return `${content}\n\n<div class="article-index"><div class="article-index__bar"><span>全部日志</span><span>${entries.length} 篇</span></div>${entries.length ? entries.map(articleCard).join('') : '<p>暂时还没有日志。</p>'}</div>\n`;
-    if (entries.some(entry => path(entry) === current)) return `${content}\n\n[返回全部日志](#/journal)\n`;
+    // Raw HTML keeps Docsify from rewriting this route as an in-article heading anchor.
+    if (entries.some(entry => path(entry) === current)) return `${content}\n\n<nav class="journal-navigation" aria-label="日志导航"><a class="journal-back" href="#/journal"><span aria-hidden="true">←</span><span>返回全部日志</span></a></nav>\n`;
     return content;
   }
   function mountHomepage() {
