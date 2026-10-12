@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-11', title: 'midjourney 生图、深海场景参考', summary: 'midjourney 基本操作与 AI 概念生图尝试、深海场景的构图和氛围选择，以及近期跟着教程搭建场景的安排。' },
     { date: '2026-10-10', title: '着色器、矩阵与透视投影', summary: '着色器类型与渲染管线、二维和三维矩阵练习、MVP 与齐次坐标，以及投影笔记整理、深度映射和遮挡判断。' },
     { date: '2026-10-09', title: '矩阵复习、LOD 与 QEM', summary: '透视投影与齐次坐标复习、性能预算驱动的 LOD Demo 讨论，以及 QEM 二维误差计算、偏导与凸函数的入门学习。' },
     { date: '2026-10-08', title: 'UV 与 SP 材质练习、透视投影', summary: '多零件 UV 与纹理分配、控制箱 SP 材质和模型排错，以及透视投影、MVP、近裁剪面与 FOV 的学习。' },
