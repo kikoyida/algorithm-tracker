@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-14', title: 'PBR 课程、作品集参考与 Niagara', summary: '观看 PBR 课程后讨论材质流程与粗糙度，拆解技术美术作品集并调整规划，以及完成 Niagara 课程 P1、建立基本系统。' },
     { date: '2026-10-13', title: '奇幻遗迹构思、留声机课程与 Niagara', summary: '奇幻遗迹参考与魔法交互 Demo 构思、资产流程和渲染概念，以及留声机课程观看与 Niagara 系统初试。' },
     { date: '2026-10-12', title: 'midjourney 课程、场景概念设计', summary: 'midjourney 课程中的构图与引导线、Lovart 参考拼贴和提示词组合，以及模块化建筑参考与 tripo 3d 制作流程的学习。' },
     { date: '2026-10-11', title: 'midjourney 生图、深海场景参考', summary: 'midjourney 基本操作与 AI 概念生图尝试、深海场景的构图和氛围选择，以及近期跟着教程搭建场景的安排。' },
