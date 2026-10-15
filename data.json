@@ -13,8 +13,8 @@
         "ac": 2,
         "try": 1,
         "tags": [
-            "math",
-            "strings"
+            "strings",
+            "math"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -62,8 +62,8 @@
         "try": 7,
         "tags": [
             "games",
-            "greedy",
-            "implementation"
+            "implementation",
+            "greedy"
         ],
         "codeforces": 2,
         "atcoder": 2,
@@ -97,9 +97,9 @@
         "ac": 2,
         "try": 2,
         "tags": [
-            "bitmasks",
             "greedy",
-            "sortings"
+            "sortings",
+            "bitmasks"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -124,12 +124,12 @@
         "ac": 5,
         "try": 8,
         "tags": [
-            "math",
-            "*special",
-            "dp",
             "greedy",
+            "implementation",
+            "math",
             "brute force",
-            "implementation"
+            "dp",
+            "*special"
         ],
         "codeforces": 5,
         "atcoder": 0,
@@ -151,8 +151,8 @@
         "ac": 2,
         "try": 0,
         "tags": [
-            "math",
             "greedy",
+            "math",
             "constructive algorithms",
             "implementation"
         ],
@@ -176,13 +176,13 @@
         "ac": 2,
         "try": 1,
         "tags": [
-            "games",
-            "math",
-            "constructive algorithms",
-            "sortings",
             "greedy",
+            "implementation",
+            "math",
+            "games",
             "brute force",
-            "implementation"
+            "sortings",
+            "constructive algorithms"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -194,11 +194,11 @@
         "ac": 3,
         "try": 0,
         "tags": [
-            "math",
-            "number theory",
             "greedy",
+            "implementation",
+            "math",
             "brute force",
-            "implementation"
+            "number theory"
         ],
         "codeforces": 3,
         "atcoder": 0,
@@ -237,10 +237,10 @@
         "ac": 3,
         "try": 1,
         "tags": [
-            "math",
-            "number theory",
             "greedy",
             "implementation",
+            "math",
+            "number theory",
             "chinese remainder theorem"
         ],
         "codeforces": 3,
@@ -253,8 +253,8 @@
         "ac": 1,
         "try": 2,
         "tags": [
-            "data structures",
-            "greedy"
+            "greedy",
+            "data structures"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -266,14 +266,14 @@
         "ac": 2,
         "try": 6,
         "tags": [
-            "math",
-            "two pointers",
-            "schedules",
+            "implementation",
             "brute force",
+            "schedules",
             "expression parsing",
-            "sortings",
             "binary search",
-            "implementation"
+            "math",
+            "sortings",
+            "two pointers"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -287,8 +287,8 @@
         "tags": [
             "strings",
             "greedy",
-            "constructive algorithms",
-            "sortings"
+            "sortings",
+            "constructive algorithms"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -310,9 +310,9 @@
         "ac": 3,
         "try": 2,
         "tags": [
-            "binary search",
+            "greedy",
             "math",
-            "greedy"
+            "binary search"
         ],
         "codeforces": 3,
         "atcoder": 0,
@@ -324,10 +324,10 @@
         "ac": 2,
         "try": 2,
         "tags": [
-            "bitmasks",
-            "greedy",
             "brute force",
-            "sortings"
+            "greedy",
+            "sortings",
+            "bitmasks"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -339,13 +339,13 @@
         "ac": 4,
         "try": 5,
         "tags": [
-            "math",
             "greedy",
-            "constructive algorithms",
-            "dp",
+            "implementation",
+            "math",
             "trees",
             "brute force",
-            "implementation"
+            "dp",
+            "constructive algorithms"
         ],
         "codeforces": 4,
         "atcoder": 0,
@@ -357,9 +357,9 @@
         "ac": 1,
         "try": 1,
         "tags": [
-            "bitmasks",
+            "brute force",
             "math",
-            "brute force"
+            "bitmasks"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -371,14 +371,14 @@
         "ac": 4,
         "try": 0,
         "tags": [
-            "math",
-            "greedy",
-            "two pointers",
+            "implementation",
             "brute force",
-            "binary search",
+            "greedy",
+            "math",
             "data structures",
-            "constructive algorithms",
-            "implementation"
+            "two pointers",
+            "binary search",
+            "constructive algorithms"
         ],
         "codeforces": 4,
         "atcoder": 0,
@@ -390,9 +390,9 @@
         "ac": 3,
         "try": 1,
         "tags": [
-            "constructive algorithms",
+            "sortings",
             "implementation",
-            "sortings"
+            "constructive algorithms"
         ],
         "codeforces": 3,
         "atcoder": 0,
@@ -414,11 +414,11 @@
         "ac": 3,
         "try": 2,
         "tags": [
-            "games",
-            "schedules",
-            "binary search",
             "greedy",
-            "brute force"
+            "brute force",
+            "games",
+            "binary search",
+            "schedules"
         ],
         "codeforces": 3,
         "atcoder": 0,
@@ -430,8 +430,8 @@
         "ac": 1,
         "try": 0,
         "tags": [
-            "binary search",
-            "greedy"
+            "greedy",
+            "binary search"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -456,8 +456,8 @@
         "try": 0,
         "tags": [
             "math",
-            "number theory",
             "combinatorics",
+            "number theory",
             "dp",
             "constructive algorithms"
         ],
@@ -491,13 +491,13 @@
         "ac": 4,
         "try": 0,
         "tags": [
-            "math",
             "graphs",
-            "dfs and similar",
-            "brute force",
-            "dsu",
-            "strings",
             "trees",
+            "brute force",
+            "strings",
+            "dfs and similar",
+            "dsu",
+            "math",
             "constructive algorithms"
         ],
         "codeforces": 3,
@@ -520,10 +520,10 @@
         "ac": 1,
         "try": 2,
         "tags": [
-            "binary search",
-            "two pointers",
             "brute force",
-            "implementation"
+            "implementation",
+            "binary search",
+            "two pointers"
         ],
         "codeforces": 1,
         "atcoder": 0,
@@ -545,13 +545,13 @@
         "ac": 6,
         "try": 2,
         "tags": [
-            "math",
-            "two pointers",
-            "2-sat",
-            "data structures",
             "brute force",
-            "number theory",
             "greedy",
+            "math",
+            "data structures",
+            "number theory",
+            "2-sat",
+            "two pointers",
             "constructive algorithms"
         ],
         "codeforces": 6,
@@ -574,9 +574,9 @@
         "ac": 2,
         "try": 2,
         "tags": [
-            "math",
+            "number theory",
             "greedy",
-            "number theory"
+            "math"
         ],
         "codeforces": 2,
         "atcoder": 0,
@@ -588,10 +588,10 @@
         "ac": 2,
         "try": 0,
         "tags": [
-            "binary search",
-            "greedy",
+            "dp",
             "two pointers",
-            "dp"
+            "binary search",
+            "greedy"
         ],
         "codeforces": 2,
         "atcoder": 0,
