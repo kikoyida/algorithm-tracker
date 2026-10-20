@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-19', title: '手里剑 UV、第二幕场景与结尾转场', summary: '飞刃 UV 与发光侧边、手里剑 SP 试材质，Unity 第二幕美术和碰撞调整，以及 AI 协助的结尾转场与倒影方案讨论。' },
     { date: '2026-10-15', title: '海湾场景搭建、UE MCP 与课程安排', summary: '海湾地形与悬崖资产试摆、UE MCP 连接及 AI 协助灰模调整，图形学后续课程与作品集讨论，以及学院系统阶段提交。' },
     { date: '2026-10-14', title: 'PBR 课程、作品集参考与 Niagara', summary: '观看 PBR 课程后讨论材质流程与粗糙度，拆解技术美术作品集并调整规划，以及完成 Niagara 课程 P1、建立基本系统。' },
     { date: '2026-10-13', title: '奇幻遗迹构思、留声机课程与 Niagara', summary: '奇幻遗迹参考与魔法交互 Demo 构思、资产流程和渲染概念，以及留声机课程观看与 Niagara 系统初试。' },
