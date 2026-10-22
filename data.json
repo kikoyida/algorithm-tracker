@@ -1,52 +1,4 @@
 {
-    "2025-09-24": {
-        "ac": 0,
-        "try": 2,
-        "tags": [],
-        "codeforces": 0,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 0
-    },
-    "2025-09-25": {
-        "ac": 2,
-        "try": 1,
-        "tags": [
-            "strings",
-            "math"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2025-09-26": {
-        "ac": 1,
-        "try": 1,
-        "tags": [
-            "greedy",
-            "sortings"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2025-09-27": {
-        "ac": 1,
-        "try": 1,
-        "tags": [
-            "greedy"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
     "2025-10-01": {
         "ac": 2,
         "try": 0,
@@ -58,18 +10,14 @@
         "total": 2
     },
     "2025-10-04": {
-        "ac": 4,
+        "ac": 2,
         "try": 7,
-        "tags": [
-            "greedy",
-            "games",
-            "implementation"
-        ],
-        "codeforces": 2,
+        "tags": [],
+        "codeforces": 0,
         "atcoder": 2,
         "luogu": 0,
         "nowcoder": 0,
-        "total": 4
+        "total": 2
     },
     "2025-10-05": {
         "ac": 1,
@@ -81,87 +29,6 @@
         "nowcoder": 0,
         "total": 1
     },
-    "2025-10-06": {
-        "ac": 1,
-        "try": 2,
-        "tags": [
-            "math"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2025-10-10": {
-        "ac": 2,
-        "try": 2,
-        "tags": [
-            "greedy",
-            "sortings",
-            "bitmasks"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2025-11-14": {
-        "ac": 1,
-        "try": 7,
-        "tags": [
-            "greedy",
-            "implementation"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2025-11-20": {
-        "ac": 5,
-        "try": 8,
-        "tags": [
-            "brute force",
-            "implementation",
-            "*special",
-            "math",
-            "greedy",
-            "dp"
-        ],
-        "codeforces": 5,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 5
-    },
-    "2025-12-12": {
-        "ac": 0,
-        "try": 7,
-        "tags": [],
-        "codeforces": 0,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 0
-    },
-    "2026-01-23": {
-        "ac": 2,
-        "try": 0,
-        "tags": [
-            "greedy",
-            "implementation",
-            "constructive algorithms",
-            "math"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
     "2026-02-07": {
         "ac": 1,
         "try": 1,
@@ -172,234 +39,6 @@
         "nowcoder": 0,
         "total": 1
     },
-    "2026-03-14": {
-        "ac": 2,
-        "try": 1,
-        "tags": [
-            "implementation",
-            "games",
-            "sortings",
-            "math",
-            "greedy",
-            "brute force",
-            "constructive algorithms"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2026-03-16": {
-        "ac": 3,
-        "try": 0,
-        "tags": [
-            "implementation",
-            "number theory",
-            "math",
-            "greedy",
-            "brute force"
-        ],
-        "codeforces": 3,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 3
-    },
-    "2026-03-28": {
-        "ac": 1,
-        "try": 1,
-        "tags": [
-            "greedy"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2026-04-01": {
-        "ac": 2,
-        "try": 2,
-        "tags": [
-            "graph matchings",
-            "*special",
-            "strings",
-            "implementation"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2026-04-07": {
-        "ac": 3,
-        "try": 1,
-        "tags": [
-            "implementation",
-            "number theory",
-            "math",
-            "greedy",
-            "chinese remainder theorem"
-        ],
-        "codeforces": 3,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 3
-    },
-    "2026-04-08": {
-        "ac": 1,
-        "try": 2,
-        "tags": [
-            "greedy",
-            "data structures"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2026-04-11": {
-        "ac": 2,
-        "try": 6,
-        "tags": [
-            "two pointers",
-            "implementation",
-            "expression parsing",
-            "schedules",
-            "sortings",
-            "math",
-            "brute force",
-            "binary search"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2026-04-13": {
-        "ac": 2,
-        "try": 7,
-        "tags": [
-            "greedy",
-            "sortings",
-            "strings",
-            "constructive algorithms"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2026-04-14": {
-        "ac": 0,
-        "try": 2,
-        "tags": [],
-        "codeforces": 0,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 0
-    },
-    "2026-04-15": {
-        "ac": 3,
-        "try": 2,
-        "tags": [
-            "greedy",
-            "math",
-            "binary search"
-        ],
-        "codeforces": 3,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 3
-    },
-    "2026-04-18": {
-        "ac": 2,
-        "try": 2,
-        "tags": [
-            "greedy",
-            "brute force",
-            "sortings",
-            "bitmasks"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2026-04-21": {
-        "ac": 4,
-        "try": 5,
-        "tags": [
-            "brute force",
-            "implementation",
-            "math",
-            "greedy",
-            "trees",
-            "dp",
-            "constructive algorithms"
-        ],
-        "codeforces": 4,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 4
-    },
-    "2026-04-22": {
-        "ac": 1,
-        "try": 1,
-        "tags": [
-            "brute force",
-            "math",
-            "bitmasks"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2026-04-30": {
-        "ac": 4,
-        "try": 0,
-        "tags": [
-            "two pointers",
-            "implementation",
-            "greedy",
-            "math",
-            "brute force",
-            "data structures",
-            "constructive algorithms",
-            "binary search"
-        ],
-        "codeforces": 4,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 4
-    },
-    "2026-05-21": {
-        "ac": 3,
-        "try": 1,
-        "tags": [
-            "implementation",
-            "sortings",
-            "constructive algorithms"
-        ],
-        "codeforces": 3,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 3
-    },
     "2026-05-25": {
         "ac": 1,
         "try": 0,
@@ -409,63 +48,6 @@
         "luogu": 0,
         "nowcoder": 0,
         "total": 1
-    },
-    "2026-06-18": {
-        "ac": 3,
-        "try": 2,
-        "tags": [
-            "games",
-            "brute force",
-            "greedy",
-            "schedules",
-            "binary search"
-        ],
-        "codeforces": 3,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 3
-    },
-    "2026-06-19": {
-        "ac": 1,
-        "try": 0,
-        "tags": [
-            "greedy",
-            "binary search"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2026-06-28": {
-        "ac": 1,
-        "try": 0,
-        "tags": [
-            "greedy"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
-    "2026-07-12": {
-        "ac": 3,
-        "try": 0,
-        "tags": [
-            "combinatorics",
-            "number theory",
-            "math",
-            "dp",
-            "constructive algorithms"
-        ],
-        "codeforces": 3,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 3
     },
     "2026-08-15": {
         "ac": 4,
@@ -488,23 +70,14 @@
         "total": 2
     },
     "2026-08-17": {
-        "ac": 4,
+        "ac": 1,
         "try": 0,
-        "tags": [
-            "strings",
-            "trees",
-            "graphs",
-            "dfs and similar",
-            "math",
-            "brute force",
-            "dsu",
-            "constructive algorithms"
-        ],
-        "codeforces": 3,
+        "tags": [],
+        "codeforces": 0,
         "atcoder": 0,
         "luogu": 0,
         "nowcoder": 1,
-        "total": 4
+        "total": 1
     },
     "2026-08-23": {
         "ac": 6,
@@ -516,21 +89,6 @@
         "nowcoder": 6,
         "total": 6
     },
-    "2026-08-25": {
-        "ac": 1,
-        "try": 2,
-        "tags": [
-            "two pointers",
-            "brute force",
-            "implementation",
-            "binary search"
-        ],
-        "codeforces": 1,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 1
-    },
     "2026-09-03": {
         "ac": 1,
         "try": 1,
@@ -540,63 +98,5 @@
         "luogu": 0,
         "nowcoder": 0,
         "total": 1
-    },
-    "2026-09-05": {
-        "ac": 6,
-        "try": 2,
-        "tags": [
-            "two pointers",
-            "2-sat",
-            "brute force",
-            "greedy",
-            "number theory",
-            "math",
-            "data structures",
-            "constructive algorithms"
-        ],
-        "codeforces": 6,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 6
-    },
-    "2026-09-18": {
-        "ac": 5,
-        "try": 3,
-        "tags": [],
-        "codeforces": 5,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 5
-    },
-    "2026-09-19": {
-        "ac": 2,
-        "try": 2,
-        "tags": [
-            "greedy",
-            "number theory",
-            "math"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
-    },
-    "2026-09-20": {
-        "ac": 2,
-        "try": 0,
-        "tags": [
-            "greedy",
-            "two pointers",
-            "dp",
-            "binary search"
-        ],
-        "codeforces": 2,
-        "atcoder": 0,
-        "luogu": 0,
-        "nowcoder": 0,
-        "total": 2
     }
 }
