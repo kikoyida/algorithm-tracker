@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-25', title: '海洋沙滩教程与海湾场景', summary: '海洋沙滩教程笔记、Nanite 置换与地表拉伸的理解，AI 协助检查岩石缺面，以及海湾岩石资源和 Water 水体方案。' },
     { date: '2026-10-22', title: '灯光、天空系统与 Lumen', summary: '整理深度缓冲、UE 灯光与天空系统笔记，通过问答理解 Lumen 间接光、颜色溢出和反弹路径，并回顾已有渲染知识。' },
     { date: '2026-10-20', title: '水面倒影、场景模糊与穿林光束', summary: 'SP 烘焙用途、第一幕转场与分支同步，场景渐暗模糊、水面倒影和脚步涟漪调试，以及围巾重做尝试与第二幕穿林光束。' },
     { date: '2026-10-19', title: '手里剑 UV、第二幕场景与结尾转场', summary: '飞刃 UV 与发光侧边、手里剑 SP 试材质，Unity 第二幕美术和碰撞调整，以及 AI 协助的结尾转场与倒影方案讨论。' },
