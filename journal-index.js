@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-27', title: '留声机底座与材质流程', summary: '跟课制作并重做留声机底座，理解连续贴图、Trim Sheet、PBR 贴图来源，以及高低模取舍、灰盒和材质工具的分工。' },
     { date: '2026-10-26', title: '海湾场景搭建与 Gaea 入门', summary: '材质依赖与资源迁移、水体缺口排查，亲手搭建海湾并讨论空间和光照层次，以及 Gaea 教程、Gabor 与 Perlin 噪声的入门理解。' },
     { date: '2026-10-25', title: '海洋沙滩教程与海湾场景', summary: '海洋沙滩教程笔记、Nanite 置换与地表拉伸的理解，AI 协助检查岩石缺面，以及海湾岩石资源和 Water 水体方案。' },
     { date: '2026-10-22', title: '灯光、天空系统与 Lumen', summary: '整理深度缓冲、UE 灯光与天空系统笔记，通过问答理解 Lumen 间接光、颜色溢出和反弹路径，并回顾已有渲染知识。' },
