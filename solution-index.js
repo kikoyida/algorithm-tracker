@@ -12,6 +12,10 @@ window.solutionIndex = (() => {
     { path: 'misc', name: '杂项', tags: ['杂项'] }
   ];
   const articles = [{
+    path: 'graphics-technical-artist/brdf-microfacet-rendering-equation', title: 'BRDF、GGX 与微表面渲染方程',
+    tags: ['数学', '计算几何', '图形学', 'PBR', 'BRDF', '学习笔记'],
+    summary: '从 Roughness 与微表面法线到 Cook–Torrance 的 D、F、G，保留 13 个知识模块、原笔记插图与可编辑公式。'
+  }, {
     path: 'solutions/fjcpc2026-b', title: '2026 FJCPC B · 排考场',
     tags: ['二分答案', '贪心', '整除与取整'],
     summary: '判断无穷大情况，推导教室容量公式，再用二分答案最大化最小列间距。'

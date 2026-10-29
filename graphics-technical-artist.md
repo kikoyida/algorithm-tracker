@@ -5,7 +5,16 @@
 以 Blender 与 Unreal Engine 为主要实践工具，记录图形学基础、Shader、场景制作与自动化工具的学习过程。
 
 <div class="article-index">
-<div class="article-index__bar"><span>学习笔记</span><span>04 ARTICLES</span></div>
+<div class="article-index__bar"><span>学习笔记</span><span>05 ARTICLES</span></div>
+<a class="article-entry" href="#/graphics-technical-artist/brdf-microfacet-rendering-equation">
+<div>
+<div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>图形学</span><span>PBR</span><span>BRDF</span><span>学习笔记</span></div>
+<h3>BRDF、GGX 与微表面渲染方程</h3>
+<p>从 Roughness 与微表面法线到 Cook–Torrance 的 D、F、G，保留 13 个知识模块、原笔记插图与可编辑公式。</p>
+<span class="article-entry__read">阅读笔记</span>
+</div>
+<span class="article-entry__arrow" aria-hidden="true">↗</span>
+</a>
 <a class="article-entry" href="#/graphics-technical-artist/view-transform-perspective-projection">
 <div>
 <div class="article-entry__tags"><span>数学</span><span>计算几何</span><span>图形学</span><span>渲染管线</span><span>学习笔记</span></div>
