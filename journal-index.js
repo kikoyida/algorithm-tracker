@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-10-28', title: '海湾地形与雾效调整', summary: '修改海湾地形与场景距离，尝试高度雾的密度和起始距离，对照参考讨论明暗与空间层次，并决定阶段收尾。' },
     { date: '2026-10-27', title: '留声机底座与材质流程', summary: '跟课制作并重做留声机底座，理解连续贴图、Trim Sheet、PBR 贴图来源，以及高低模取舍、灰盒和材质工具的分工。' },
     { date: '2026-10-26', title: '海湾场景搭建与 Gaea 入门', summary: '材质依赖与资源迁移、水体缺口排查，亲手搭建海湾并讨论空间和光照层次，以及 Gaea 教程、Gabor 与 Perlin 噪声的入门理解。' },
     { date: '2026-10-25', title: '海洋沙滩教程与海湾场景', summary: '海洋沙滩教程笔记、Nanite 置换与地表拉伸的理解，AI 协助检查岩石缺面，以及海湾岩石资源和 Water 水体方案。' },
