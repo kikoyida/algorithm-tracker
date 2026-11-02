@@ -1,6 +1,11 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-11-02', title: 'Lambert、Burley 与两个主项目', summary: '复习向量、坐标空间和 Lambert 漫反射，开始理解 Burley 角度修正，整理课程资料，并确定写实渲染与场景性能工具两个主项目。' },
+    { date: '2026-11-01', title: '写实材质、眼睛渲染与菲涅尔描边光', summary: '了解眼睛与写实材质渲染，整理《最后生还者2》和《木卫四协议》的技术资料，观看菲涅尔描边光视频，联系材质的角度响应。' },
+    { date: '2026-10-31', title: '技术美术作品集、资产工具与交互效果', summary: '重新比较作品集方向，了解场景资产工具、程序化建筑和 IK，讨论血滴与表面交互案例，并安排灯光速写训练。' },
+    { date: '2026-10-30', title: '光线采样、追踪方向与 Shader 分析', summary: '区分采样次数与反弹次数，讨论相机和光源两种追踪方向，以及 ShaderArchive、RenderDoc 和编译后 Shader 的信息边界。' },
+    { date: '2026-10-29', title: '后处理对比度、BRDF 笔记整理', summary: '了解后处理体积与对比度调整，区分画面呈现和实际受光，并将已有 BRDF、GGX 与渲染方程笔记整理发布。' },
     { date: '2026-10-28', title: '海湾地形与雾效调整', summary: '修改海湾地形与场景距离，尝试高度雾的密度和起始距离，对照参考讨论明暗与空间层次，并决定阶段收尾。' },
     { date: '2026-10-27', title: '留声机底座与材质流程', summary: '跟课制作并重做留声机底座，理解连续贴图、Trim Sheet、PBR 贴图来源，以及高低模取舍、灰盒和材质工具的分工。' },
     { date: '2026-10-26', title: '海湾场景搭建与 Gaea 入门', summary: '材质依赖与资源迁移、水体缺口排查，亲手搭建海湾并讨论空间和光照层次，以及 Gaea 教程、Gabor 与 Perlin 噪声的入门理解。' },
