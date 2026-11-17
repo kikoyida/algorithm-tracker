@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-11-16', title: '重心插值、Bresenham 与深度缓冲', summary: '在 TinyRenderer 中验证重心权重控制的颜色渐变，学习 Bresenham 误差累积，并衔接坐标变换、深度插值与逐像素遮挡判断。' },
     { date: '2026-11-04', title: '走廊灯光速写', summary: '完成第一天的 UE 灯光速写，参照透视调整机位，练习拱门搭建，最后把成品与高清示例拼在一起对照。' },
     { date: '2026-11-03', title: 'Lambert 与 Burley 材质球实验', summary: '在 UE 材质球上搭建 Lambert 基准，接入 Burley 漫反射，观察粗糙度对明暗交界的影响。' },
     { date: '2026-11-02', title: 'Lambert、Burley 与两个主项目', summary: '复习向量、坐标空间和 Lambert 漫反射，开始理解 Burley 角度修正，整理课程资料，并确定写实渲染与场景性能工具两个主项目。' },
