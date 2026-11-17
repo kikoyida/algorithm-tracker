@@ -2,6 +2,12 @@
 window.journalIndex = (() => {
   const entries = [
     { date: '2026-11-16', title: '重心插值、Bresenham 与深度缓冲', summary: '在 TinyRenderer 中验证重心权重控制的颜色渐变，学习 Bresenham 误差累积，并衔接坐标变换、深度插值与逐像素遮挡判断。' },
+    { date: '2026-11-13', title: '模型填充与重心坐标', summary: '把三角形填充接到 OBJ 模型绘制，验证实心地板输出，并从 lerp 学到三角形重心权重与有向面积比例。' },
+    { date: '2026-11-12', title: '着色模型切换、MERL 与软光栅复习', summary: '在 AI 协助下调试 ShadingLab 的实际与即时切换，了解明暗交界控制和 MERL，并重新梳理 TinyRenderer 进度。' },
+    { date: '2026-11-11', title: 'UE 漫反射接入与 ShadingLab 插件', summary: '对照 Custom 与真实灯光受光，尝试接入 UE 漫反射调用，排查编译和阴影问题，并创建 ShadingLab 插件模板。' },
+    { date: '2026-11-10', title: 'Burley 材质对照与真实灯光', summary: '完成材质里的 Lambert／Burley 切换与粗糙度对照，观察轮廓变化，并准备接入 UE 真实灯光流程。' },
+    { date: '2026-11-09', title: '天空大气、雾与房间场景', summary: '讨论天空球、大气散射和三种天空雾效组件，进行房间场景截图对照，并了解 Gobo 光照遮罩。' },
+    { date: '2026-11-06', title: '参考图与 AI 白模布局调研', summary: '集中查找从参考图自动摆放已有白模的工作流，了解相机匹配、尺度标定与 DetAny3D 三维布局数据。' },
     { date: '2026-11-04', title: '走廊灯光速写', summary: '完成第一天的 UE 灯光速写，参照透视调整机位，练习拱门搭建，最后把成品与高清示例拼在一起对照。' },
     { date: '2026-11-03', title: 'Lambert 与 Burley 材质球实验', summary: '在 UE 材质球上搭建 Lambert 基准，接入 Burley 漫反射，观察粗糙度对明暗交界的影响。' },
     { date: '2026-11-02', title: 'Lambert、Burley 与两个主项目', summary: '复习向量、坐标空间和 Lambert 漫反射，开始理解 Burley 角度修正，整理课程资料，并确定写实渲染与场景性能工具两个主项目。' },
