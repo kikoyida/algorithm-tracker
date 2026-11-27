@@ -1,6 +1,7 @@
 /* Published journals only. Drafts in Obsidian are added after review. */
 window.journalIndex = (() => {
   const entries = [
+    { date: '2026-11-26', title: '《木卫四协议》明暗交界与 UE 人脸对照', summary: '用侧光球测试《木卫四协议》的明暗交界，再在 UE 中对比 Twinblast 脸部的 Lambert 与 Burley 漫反射。' },
     { date: '2026-11-24', title: 'TinyRenderer 贴图与眼球高光', summary: '为 OBJ 模型接入贴图和法线，练习顶点与片元着色，并用同机位对照调整眼白反光和虹膜高光。' },
     { date: '2026-11-16', title: '重心插值、Bresenham 与深度缓冲', summary: '在 TinyRenderer 中验证重心权重控制的颜色渐变，学习 Bresenham 误差累积，并衔接坐标变换、深度插值与逐像素遮挡判断。' },
     { date: '2026-11-13', title: '模型填充与重心坐标', summary: '把三角形填充接到 OBJ 模型绘制，验证实心地板输出，并从 lerp 学到三角形重心权重与有向面积比例。' },
